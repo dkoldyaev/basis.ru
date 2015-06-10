@@ -18,7 +18,7 @@ class News(BaseModel) :
 
     announce =  models.TextField(blank=False, null=False, verbose_name=u'Анонс', help_text=u'Будет отображаться в сописке новостей')
 
-    image =     models.ImageField(blank=True, null=True, verbose_name=u'Изображение', help_text=u'Будет отображаться над текстом открытой новости')
+    image =     models.ImageField(blank=True, null=True, upload_to='news/image', verbose_name=u'Изображение', help_text=u'Будет отображаться над текстом открытой новости')
     text =      RichTextField(blank=False, null=False, verbose_name=u'Текст')
 
     objects =   NewsQuerySet.as_manager()
