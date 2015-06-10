@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
+{% load news_images %}
+
 {% block content %}
 
     <h1>{{ news_item.title }}</h1>
 
     {% if news_item.image %}
-        <img src="{{ news_item.image.url }}" />
+        <img src="{{ news_item.image.url|news_image_fit }}" />
     {% endif %}
 
     {% autoescape off %}
