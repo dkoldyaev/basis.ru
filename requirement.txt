@@ -1,0 +1,6 @@
+Django==1.8.2
+django-ckeditor-updated==4.4.4
+django-suit==0.3a1
+Pillow==2.8.2
+pip-tools==0.3.6
+pytils==0.3
