@@ -11,6 +11,8 @@ from news.managers import NewsQuerySet
 
 class News(BaseModel) :
 
+    slug =      models.SlugField(blank=True, null=False)
+
     date =      models.DateField(blank=False, null=False, default=django.utils.timezone.now, verbose_name=u'Дата')
     title =     models.CharField(blank=False, null=False, max_length=255, verbose_name=u'Заголовок')
 
@@ -20,3 +22,21 @@ class News(BaseModel) :
     text =      RichTextField(blank=False, null=False, verbose_name=u'Текст')
 
     objects =   NewsQuerySet.as_manager()
+
+    class Meta:
+
+        ordering =  ['date']
+        verbose_name = u'Новость'
+        verbose_name_plural = u'Новости'
+
+    def save(self, *args, **kwargs):
+
+        if not self.slug :
+            from pytils.translit import slugify
+            self.slug = slugify(self.title)
+
+        super(News, self).save(*args, **kwargs)
+
+    def __unicode__(self):
+
+        return '%s (%s)' % (self.title, str(self.date))

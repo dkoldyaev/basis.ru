@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% with building=current_building %}
+    <h1>{{ building.name }}</h1>
+
+    {% autoescape off %}
+        {{ building.description }}
+    {% endautoescape %}
+
+
+    <p>тут код с image-map'ом, который нужно сгенерить. Просто будем считать, что он работает</p>
+    <p>Возможно, придется добавить в модель несколько поле для изображения этажа,
+        а в модели квартир — поля:<br/>
+        1. для хранения кода координат image-map'а конкретной квартиры,
+        2. для наведенного изображения квартиры</p>
+    <p>Сделать это не проблема — проблема в том, что это будет проблематично редактировать из админки.
+        В крайнем случае можно запариться и организовать специальный виджет для генерации image-map'а</p>
+    <p>Если это необходимо для выполнения ТЗ, я могу этим заняться, но, по времени сориентировать не готов:
+        времени свободного очень мало.</p>
+
+    {% autoescape off %}
+        {{ building.images_map }}
+    {% endautoescape %}
+
+    <p>Будем считать, что картинки внизу — это ссылки на image-map'е</p>
+
+    <ul>
+        {% for apartament in building.apartments_set.all %}
+            <li>
+                <a href="{% url 'apartment_detail' building_id=building.id apartment_id=apartament.id %}">
+                    <img src="{{ apartament.plan.url }}" style="display: block; width: 300px; height: auto;" />
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endwith %}
+
+{% for building in buildings_list %}
+    {% if current_building != building %}
+        <h2><a href="{% url 'building_detail' building_id=building.id %}">{{ building.name }}</a></h2>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}

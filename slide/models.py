@@ -17,10 +17,24 @@ class Slide(BaseModel):
 
     page =      models.ForeignKey('slide.SlidePage', blank=False, null=False, related_name='slide_set')
 
+    order =     models.IntegerField(blank=False, null=False, default=0, verbose_name=u'Сортировка')
+
     objects =   SlideQuerySet.as_manager()
+
+    class Meta:
+
+        ordering =  ['order']
+        verbose_name = u'Слайд'
+        verbose_name_plural = u'Слайды'
 
 class SlidePage(BaseModel) :
 
     name =      models.CharField(blank=False, null=False, max_length=255, verbose_name=u'Название группы слайдов')
+    slug =      models.SlugField(blank=True, null=False)
 
     objects =   SlidePageQuerySet.as_manager()
+
+    class Meta:
+
+        verbose_name = u'Группа слайдов'
+        verbose_name_plural = u'Группы слайдов'

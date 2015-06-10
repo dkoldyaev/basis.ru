@@ -30,6 +30,7 @@ class BaseModel(models.Model):
             super(BaseModel, self).delete(*args, **kwargs)
 
     def save(self, *args, **kwargs):
+
         try:
             from pytils.translit import slugify
             if self.slug.strip() == '':

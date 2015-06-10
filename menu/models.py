@@ -11,7 +11,7 @@ from basis.models import BaseModel
 MENU_TYPES = [
     ('slide_page',          u'Группа слайдов',          ['slide_page_slide_page',]),
     ('news_list',           u'Список новостей',         []),
-    ('planing',             u'Планировки',              []),
+    ('planing_build',       u'Планировка дома',         ['planing_build_buildind'])
 ]
 MENU_TARGETS = [
     ('_self',   u'Как обычно'),
@@ -29,6 +29,7 @@ class MenuItem(BaseModel):
     order =     models.PositiveIntegerField(blank=False, null=False, default=0, verbose_name=u'Сортировка', help_text=u'Для сортировки пунктов в меню. Числа. От большего к меньшему')
 
     slide_page_slide_page =     models.ForeignKey('slide.SlidePage', blank=True, null=True)
+    planing_build_buildind =    models.ForeignKey('planing.Building', blank=True, null=True)
 
     meta_title =        models.CharField(blank=True, null=True, max_length=255, verbose_name=u'Title', help_text=u'Заголовок окна на странице')
     meta_description =  models.TextField(blank=True, null=True, verbose_name=u'META-Описание', help_text=u'Описание страницы новости для поисковиков')
@@ -38,20 +39,17 @@ class MenuItem(BaseModel):
 
         try:
 
-            if self.type == 'page' :
-
-                if self.page_page.slug == 'index' :
-                    return reverse('page_detail', kwargs={'page_slug':''})
+            if self.type == 'slide_page' :
+                if self.slide_page_slide_page.slug == 'index' :
+                    return reverse('slide_page', kwargs={'slide_page_slug':''})
                 else:
-                    return reverse('page_detail', kwargs={'page_slug':self.page_page.slug})
+                    return reverse('slide_page', kwargs={'slide_page_slug':self.slide_page_slide_page.slug})
 
-            if self.type == 'catalog_section' :
+            if self.type == 'news_list' :
+                return reverse('news_list')
 
-                return reverse('catalog_list', kwargs={'section_slug':self.catalog_section.slug if self.catalog_section else ''})
-
-            if self.type == 'clients_list' :
-
-                return reverse('clients_list')
+            if self.type == 'planing_build' :
+                return reverse('building_detail', kwargs={'building_id':self.planing_build_buildind.id})
 
         except :
 

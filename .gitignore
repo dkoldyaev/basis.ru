@@ -1,4 +1,6 @@
 /.idea
+/www/media
+/www/static
 
 *.sqlite3
 *.pyc

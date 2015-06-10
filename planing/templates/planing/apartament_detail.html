@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ apartment.title }}</h1>
+
+    <img src="{{ apartment.plan.url }}" />
+
+    {% autoescape off %}
+        {{ apartment.description }}
+    {% endautoescape %}
+
+    <a href="{% url 'building_detail' building_id=apartment.building_id %}">назад к списку квартир</a>
+
+{% endblock %}

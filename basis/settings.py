@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'debug_toolbar',
     'ckeditor',
     'pytils',
 
@@ -47,12 +48,6 @@ INSTALLED_APPS = (
     'news',
     'planing',
     'slide',
-)
-
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
-
-TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-    'django.core.context_processors.request',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -64,7 +59,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
+
+INTERNAL_IPS = ['127.0.0.1', '*']
 
 ROOT_URLCONF = 'basis.urls'
 
@@ -79,6 +77,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'menu.context_processors.menu_items',
             ],
         },
     },
@@ -86,6 +86,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'basis.wsgi.application'
 
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -101,7 +102,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
@@ -117,4 +118,8 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'www', 'static')
+
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'

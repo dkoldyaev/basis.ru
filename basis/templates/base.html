@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% block header %}
+        <ul style="display: block; overflow: hidden; border: 3px dashed darkgreen; padding: 1em; margin: 1em;">
+            {% for header_menu_item in header_menu_items %}
+                <li>{% spaceless %}
+                    {% if header_menu_item != current_header_menu_item %}<a href="{{ header_menu_item.path }}">{% endif %}
+                        {{ header_menu_item.text }}
+                    {% if header_menu_item != current_header_menu_item %}</a>{% endif %}
+                {% endspaceless %}</li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
+    {% block content %}{% endblock %}
+    {% block footer %}{% endblock %}
+</body>
+</html>
