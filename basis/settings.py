@@ -101,10 +101,6 @@ DATABASES = {
     }
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = os.path.join(MEDIA_ROOT, 'app-messages')
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -120,8 +116,6 @@ USE_TZ = True
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
@@ -130,6 +124,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'www', 'media')
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(MEDIA_ROOT, 'app-messages')
 
 if socket.gethostname() == 'debian-home':
     from basis.local_settings.debian_home__local_settings import *
