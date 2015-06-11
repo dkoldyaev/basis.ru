@@ -5,6 +5,9 @@
     <title></title>
 </head>
 <body>
+    {% block script %}
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    {% endblock %}
     {% block header %}
         <ul style="display: block; overflow: hidden; border: 3px dashed darkgreen; padding: 1em; margin: 1em;">
             {% for header_menu_item in header_menu_items %}
