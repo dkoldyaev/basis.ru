@@ -5,6 +5,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 from basis.models import BaseModel
+from system_var.managers import VarQuerySet
 
 class Var(BaseModel):
 
@@ -18,6 +19,8 @@ class Var(BaseModel):
     string =        models.CharField(max_length=255, blank=True, null=True, verbose_name=u'Строковое значение')
     text =          models.TextField(blank=True, null=True, verbose_name=u'Текстовое значение')
     image =         models.ImageField(blank=True, null=True, verbose_name=u'Картинка')
+
+    objects =       VarQuerySet.as_manager()
 
     def __unicode__(self):
 
