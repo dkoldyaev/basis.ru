@@ -1,0 +1,17 @@
+-- name:\t{{ instance.name }}
+\r\n
+
+-- email:\t{{ instance.email }}
+\r\n
+
+-- phone:\t{{ instance.phone }}
+\r\n
+
+-- message:
+\r\n{{ instance.message }}
+\r\n
+
+-- page:\t{{ instance.page }}
+\r\n
+
+-- created:\t{{ instance.created }}

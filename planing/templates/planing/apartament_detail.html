@@ -10,6 +10,11 @@
         {{ apartment.description }}
     {% endautoescape %}
 
+    <div style="display: block; overflow: hidden; border: 3px dashed red; padding: 1em; margin: 1em;">
+        <h2>Форма заказа</h2>
+        {% include 'feedback/inc/feedback_form.html' with form=feedback_form %}
+    </div>
+
     <a href="{% url 'building_detail' building_id=apartment.building_id %}">назад к списку квартир</a>
 
 {% endblock %}

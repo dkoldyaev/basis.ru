@@ -2,8 +2,10 @@
 __author__ = 'dkoldyaev'
 
 from django.shortcuts import render, Http404, redirect
+from django.template import RequestContext
 
 from planing.models import Building, Apartment
+from feedback.context_processors import feedback_form
 
 def buildings(request):
 
@@ -46,5 +48,6 @@ def apartment(request, building_id, apartment_id) :
         'planing/apartament_detail.html',
         {
             'apartment':    apart
-        }
+        },
+        context_instance=RequestContext(request, processors=[feedback_form])
     )

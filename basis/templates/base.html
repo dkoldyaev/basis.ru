@@ -1,3 +1,4 @@
+{% load siteblocks %}
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -7,19 +8,59 @@
 <body>
     {% block script %}
         <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('form').submit(function(event){
+
+                    event.preventDefault();
+
+                    $.ajax({
+                        url:    $(this).attr('action'),
+                        type:   $(this).attr('method'),
+                        data:   $(this).serialize(),
+                        success:(function(form){return function(data) {
+                            form.find('.error_list').remove();
+                            if (data['success']) {
+                                alert('ok');
+                            } else {
+                                for (key in data['errors']) {
+                                    var input = form.find('*[name='+key+']');
+                                    var ul = $('<ul style="color:red" class="error_list"></ul>');
+                                    for (er_num in data['errors'][key]) {
+                                        ul.append($('<li>'+data['errors'][key][er_num]+'</li>'));
+                                    }
+                                    ul.insertBefore(input);
+                                }
+                            }
+                        };})($(this))
+                    });
+
+                });
+            });
+        </script>
     {% endblock %}
     {% block header %}
-        <ul style="display: block; overflow: hidden; border: 3px dashed darkgreen; padding: 1em; margin: 1em;">
-            {% for header_menu_item in header_menu_items %}
-                <li>{% spaceless %}
-                    {% if header_menu_item != current_header_menu_item %}<a href="{{ header_menu_item.path }}">{% endif %}
-                        {{ header_menu_item.text }}
-                    {% if header_menu_item != current_header_menu_item %}</a>{% endif %}
-                {% endspaceless %}</li>
-            {% endfor %}
-        </ul>
+        <header style="display: block; overflow: hidden; border: 3px dashed darkgreen; padding: 1em; margin: 1em;">
+            <a href="{% url 'slide_page' slide_page_slug='' %}">подпись логотипа: {% siteblock 'logo_text' %}</a>
+            <ul>
+                {% for header_menu_item in header_menu_items %}
+                    <li>{% spaceless %}
+                        {% if header_menu_item != current_header_menu_item %}<a href="{{ header_menu_item.path }}">{% endif %}
+                            {{ header_menu_item.text }}
+                        {% if header_menu_item != current_header_menu_item %}</a>{% endif %}
+                    {% endspaceless %}</li>
+                {% endfor %}
+            </ul>
+        </header>
     {% endblock %}
+    <section style="display: block; overflow: hidden; border: 3px dashed darkblue; padding: 1em; margin: 1em;">
     {% block content %}{% endblock %}
-    {% block footer %}{% endblock %}
+    </section>
+
+    {% block footer %}
+        <footer style="display: block; overflow: hidden; border: 3px dashed darkred; padding: 1em; margin: 1em;">
+            телефон: {% siteblock "phone" %}{% endblock %}
+            {% include 'feedback/inc/order_call_form.html' with form=order_call_form %}
+        </footer>
 </body>
 </html>

@@ -36,6 +36,7 @@ urlpatterns += [
 
     url(r'^news', include('news.urls')),
     url(r'^planing', include('planing.urls')),
+    url(r'^feedback', include('feedback.urls')),
     url(r'^', include('slide.urls')),
 
 ]

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
+import os, socket
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -42,13 +42,14 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'ckeditor',
     'pytils',
+    'siteblocks',
 
     'basis',
     'menu',
     'news',
     'planing',
     'slide',
-    'system_var',
+    'feedback',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,7 +81,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 'menu.context_processors.menu_items',
-                'system_var.context_processors.system_vars',
+                'feedback.context_processors.order_call_form',
             ],
         },
     },
@@ -116,12 +117,16 @@ USE_TZ = True
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'media')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'www', 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'www', 'media')
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+
+if socket.gethostname() == 'debian-home':
+    from basis.local_settings.debian_home__local_settings import *

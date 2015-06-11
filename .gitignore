@@ -1,6 +1,7 @@
 /.idea
 /www/media
 /www/static
+/basis/local_settings/*__local_settings.py
 
 *.sqlite3
 *.pyc
