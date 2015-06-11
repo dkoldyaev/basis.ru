@@ -101,6 +101,9 @@ DATABASES = {
     }
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(MEDIA_ROOT, 'app-messages')
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
