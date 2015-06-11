@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'news',
     'planing',
     'slide',
+    'system_var',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,6 +80,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 'menu.context_processors.menu_items',
+                'system_var.context_processors.system_vars',
             ],
         },
     },

@@ -1,6 +1,9 @@
 __author__ = 'dkoldyaev'
 
-from django.shortcuts import render, Http404
+import json
+
+from django.shortcuts import render, Http404, render_to_response
+from django.http import JsonResponse
 
 from news.models import News
 
@@ -14,12 +17,30 @@ def list(request):
     except:
         raise Http404
 
+    next_page = current_page+1 if news.count() > page_size*current_page else None
+
+    if request.is_ajax() :
+
+        result = {
+            'news_data':    render_to_response(
+                                'inc/news_list.html',
+                                {
+
+                                }
+                            ),
+            'current_page': current_page,
+            'next_page':    next_page
+        }
+
+        return JsonResponse(json.dumps(result))
+
     return render(
         request,
         'news/list.html',
         {
-            'news':     news[page_size*(current_page-1):page_size*current_page],
-            'page':     current_page if news.count() > page_size*current_page else None,
+            'news':         news[page_size*(current_page-1):page_size*current_page],
+            'current_page': current_page,
+            'next_page':    next_page
         }
     )
 

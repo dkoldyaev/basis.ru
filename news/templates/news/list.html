@@ -3,18 +3,11 @@
 {% block content %}
 
     <h1>Новости</h1>
-    <ul>
-        {% for news_item in news %}
-            <li>
-                <h2>
-                    <a href="{% url 'news_detail' news_id=news_item.id news_slug=news_item.slug %}">{{ news_item.title }}</a>
-                    {{ news_item.date }}<br/>
-                    {% autoescape off %}
-                        {{ news_item.announce }}
-                    {% endautoescape %}
-                </h2>
-            </li>
-        {% endfor %}
-    </ul>
+
+    {% include 'inc/news_list.html' with news=news %}
+
+    {% if next_page %}
+        <a href="{% url 'news_list' %}?page={{ next_page }}">Далее</a>
+    {% endif %}
 
 {% endblock %}

@@ -16,7 +16,7 @@ class News(BaseModel) :
     date =      models.DateField(blank=False, null=False, default=django.utils.timezone.now, verbose_name=u'Дата')
     title =     models.CharField(blank=False, null=False, max_length=255, verbose_name=u'Заголовок')
 
-    announce =  models.TextField(blank=False, null=False, verbose_name=u'Анонс', help_text=u'Будет отображаться в сописке новостей')
+    announce =  models.TextField(blank=False, null=False, verbose_name=u'Анонс', help_text=u'Будет отображаться в списке новостей')
 
     image =     models.ImageField(blank=True, null=True, upload_to='news/image', verbose_name=u'Изображение', help_text=u'Будет отображаться над текстом открытой новости')
     text =      RichTextField(blank=False, null=False, verbose_name=u'Текст')
