@@ -5,39 +5,46 @@
     {{ block.super }}
     <script type="text/javascript">
 
-        function getBodyScrollTop() {
-            return self.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop);
-        }
+        $(document).ready(function(){
 
-        $('body').on('click', '.next_page', function(event){
-
-            event.preventDefault();
-
-            $.ajax({
-                url:        $(this).attr('href'),
-                type:       'get',
-                dataType:   'json',
-                success:    (function(next_page_link){return function(data){
-                    $('#news_list').append(data.news_data);
-                    if (data.next_page) {
-                        next_page_link.attr('href', '?page='+data.next_page);
-                    } else {
-                        next_page_link.remove()
-                    }
-                };})($(this))
-            })
-
-        });
-
-
-        $(window).scroll(function(){
-
-            var more_link = $('.next_page');
-
-{#            console.log($('body').height() - getBodyScrollTop(), more_link.position().top-200);#}
-            if ($('body').height() - getBodyScrollTop() < more_link.position().top - 200) {
-                more_link.click();
+            function getBodyScrollTop() {
+                return self.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop);
             }
+
+            $('body').on('click', '.next_page', function(event){
+
+                event.preventDefault();
+
+                $.ajax({
+                    url:        $(this).attr('href'),
+                    type:       'get',
+                    dataType:   'json',
+                    success:    (function(next_page_link){return function(data){
+                        $('#news_list').append(data.news_data);
+                        if (data.next_page) {
+                            next_page_link.attr('href', '?page='+data.next_page);
+                        } else {
+                            next_page_link.remove();
+                        }
+                    };})($(this))
+                })
+
+            });
+
+
+            $(window).bind('scroll', function(){
+
+                var more_link = $('.next_page');
+
+                if ($('.next_page').size()) {
+
+                    if ($(window).height() + getBodyScrollTop() >= more_link.position().top - 50) {
+                        more_link.click();
+                    }
+
+                }
+
+            });
 
         });
 
