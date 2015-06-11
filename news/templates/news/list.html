@@ -5,6 +5,10 @@
     {{ block.super }}
     <script type="text/javascript">
 
+        function getBodyScrollTop() {
+            return self.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop);
+        }
+
         $('body').on('click', '.next_page', function(event){
 
             event.preventDefault();
@@ -18,17 +22,24 @@
                     if (data.next_page) {
                         next_page_link.attr('href', '?page='+data.next_page);
                     } else {
-                        next_page_link.hide()
+                        next_page_link.remove()
                     }
                 };})($(this))
             })
 
-        }).on('scoll', function(){
+        });
+
+
+        $(window).scroll(function(){
 
             var more_link = $('.next_page');
-            more_link.position()
 
-        })
+{#            console.log($('body').height() - getBodyScrollTop(), more_link.position().top-200);#}
+            if ($('body').height() - getBodyScrollTop() < more_link.position().top - 200) {
+                more_link.click();
+            }
+
+        });
 
     </script>
 
@@ -39,7 +50,7 @@
     <h1>Новости</h1>
     <p>К сожалению, сделать подгрузки при прокрутке я не успеваю (</p>
 
-    <ul id="news_list">
+    <ul id="news_list" style="display:block; width: 400px;">
         {% include 'inc/news_list.html' with news=news %}
     </ul>
 
