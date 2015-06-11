@@ -78,5 +78,5 @@ class Var(BaseModel):
     class Meta:
 
         ordering = ['group', 'slug']
-        verbose_name = u'Системная переменная'
-        verbose_name_plural = u'Системные переменные'
+        verbose_name = u'Константа'
+        verbose_name_plural = u'Константы'
