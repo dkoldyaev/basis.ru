@@ -32,48 +32,32 @@ class Apartment(BaseModel):
     plan_fill_area =\
                 models.TextField(blank=True, null=True, verbose_name=u'Координаты области')
     plan =      models.FileField(blank=False, null=True, upload_to='apartment/plan', verbose_name=u'План квартиры')
-    price =     models.IntegerField(blank=False, null=False, verbose_name=u'Цена за м²')
+    price =     models.IntegerField(blank=True, null=True, verbose_name=u'Цена за м²')
 
     building =  models.ForeignKey('planing.Building', related_name='apartments_set', blank=False, null=False)
 
-    description=RichTextField(blank=False, null=False, verbose_name=u'Описание', help_text=u'Площадь, количество комнат и т.д.')
+    description=RichTextField(blank=True, null=True, verbose_name=u'Описание', help_text=u'Площадь, количество комнат и т.д.')
 
     order =     models.IntegerField(blank=False, null=False, default=0, verbose_name=u'Сортировка')
 
     objects =   ApartmentQuerySet.as_manager()
 
-    @property
-    def get_coords(self):
-
-        import os
-        from xml.etree import ElementTree
-        from django.conf import settings
-
-        tree = ElementTree.parse(os.path.join(settings.MEDIA_ROOT, self.plan_fill.url))
-        root = tree.getroot();
-
-        polylines = root.findall('polyline')
-        polygons = []
-        for i, coord in enumerate(polylines):
-            if i == len(polylines)-1 :
-                polygons[0][1]=coord.strip()
-            elif i == 0 :
-                polygons.append([coord.strip()])
-            else:
-                polygons.append(coord.split(' '))
-
-        return polygons
-
-    def get_plan_fill_area(self):
+    def get_plan_fill_areas(self):
         return self.plan_fill_area.split(';')
 
     def save(self, *args, **kwargs):
 
         super(Apartment, self).save(*args, **kwargs)
 
-        import itertools
-        self.plan_fill_area = ';'.join([','.join(list(itertools.chain(*coord))) for coord in self.get_coords])
+        from xml.dom import minidom
+        doc = minidom.parseString(self.plan_fill.read())
+        polylines = doc.getElementsByTagName('polyline')
+        self.plan_fill_area = ';'.join([polyline.getAttribute('points').strip().replace(' ', ',') for polyline in polylines])
+
         super(Apartment, self).save(*args, **kwargs)
+
+    def __unicode__(self):
+        return str(self.id)
 
     class Meta:
 

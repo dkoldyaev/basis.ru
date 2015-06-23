@@ -1,0 +1,12 @@
+img.map,
+map area {
+  outline: none !important;
+}
+img.map:hover,
+map area:hover,
+img.map:focus,
+map area:focus,
+img.map:active,
+map area:active {
+  outline: none !important;
+}

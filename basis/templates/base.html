@@ -1,9 +1,13 @@
 {% load siteblocks %}
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    {% block style %}
+        <link rel="{% static 'css/style.css' %}" rel="stylesheet" media="all">
+    {% endblock %}
 </head>
 <body>
     {% block script %}

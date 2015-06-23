@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 
+{% block script %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.apartment_area').bind('click', function(event){
+                event.preventDefault();
+                var area = $(this);
+                area.blur();
+                $('.apartment_detail').hide()
+                $('#apartment_' + area.attr('data-target')).show();
+                $('#building_floor_plan__image').css({
+                    background: 'url('+area.attr('data-image')+')'
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
 
 {% with building=current_building %}
@@ -7,17 +25,32 @@
 
     {% autoescape off %}
         {{ building.description }}
-    {% endautoescape %}
+    {% endautoescape %}f
 
     <div class="building_floor_plan" >
-        <img src="{{ building.plan.url }}" style="background: {% for apartament in building.apartments_set.all %}url({{ apartament.plan_fill.url }}){% if not forloop.last %},{% endif %}{% endfor %}" />
+        <img src="{{ building.plan.url }}" id="building_floor_plan__image" usemap="#building_map" />
+        <map id="building_map" name="building_map">
+            {% for apartment in building.apartments_set.all %}
+                {% for area in apartment.get_plan_fill_areas %}
+                    <area shape="poly"
+                          coords="{{ area }}"
+                          data-image="{{ apartment.plan_fill.url }}"
+                          data-target="{{ apartment.id }}"
+                          class="apartment_area apartment_{{ apartment.id }}"
+                          href="{% url 'apartment_detail' building_id=building.id apartment_id=apartment.id %}"
+                          hidefocus="true" />
+                {% endfor %}
+            {% endfor %}
+        </map>
     </div>
     <ul>
         {% for apartament in building.apartments_set.all %}
-            <li>
+            <li style="display: none;" id="apartment_{{ apartament.id }}" class="apartment_detail">
                 <a href="{% url 'apartment_detail' building_id=building.id apartment_id=apartament.id %}">
                     <img src="{{ apartament.plan.url }}" style="display: block; width: 300px; height: auto;" />
                 </a>
+                {% autoescape off %}
+                {% endautoescape %}
             </li>
         {% endfor %}
     </ul>
