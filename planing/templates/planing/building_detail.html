@@ -9,23 +9,9 @@
         {{ building.description }}
     {% endautoescape %}
 
-
-    <p>тут код с image-map'ом, который нужно сгенерить. Просто будем считать, что он работает</p>
-    <p>Возможно, придется добавить в модель несколько поле для изображения этажа,
-        а в модели квартир — поля:<br/>
-        1. для хранения кода координат image-map'а конкретной квартиры,
-        2. для наведенного изображения квартиры</p>
-    <p>Сделать это не проблема — проблема в том, что это будет проблематично редактировать из админки.
-        В крайнем случае можно запариться и организовать специальный виджет для генерации image-map'а</p>
-    <p>Если это необходимо для выполнения ТЗ, я могу этим заняться, но, по времени сориентировать не готов:
-        времени свободного очень мало.</p>
-
-    {% autoescape off %}
-        {{ building.images_map }}
-    {% endautoescape %}
-
-    <p>Будем считать, что картинки внизу — это ссылки на image-map'е</p>
-
+    <div class="building_floor_plan" >
+        <img src="{{ building.plan.url }}" style="background: {% for apartament in building.apartments_set.all %}url({{ apartament.plan_fill.url }}){% if not forloop.last %},{% endif %}{% endfor %}" />
+    </div>
     <ul>
         {% for apartament in building.apartments_set.all %}
             <li>

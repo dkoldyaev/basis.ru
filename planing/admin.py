@@ -9,7 +9,7 @@ from planing.models import Apartment, Building
 class ApartmentInlineAdmin(SortableTabularInline):
 
     model = Apartment
-    fields = ['plan', 'price', 'description']
+    fields = ['plan_fill', 'plan', 'price', 'description']
     extra = 0
 
 class BuildingAdmin(admin.ModelAdmin):
