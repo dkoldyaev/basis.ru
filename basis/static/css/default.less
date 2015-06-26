@@ -1,3 +1,4 @@
+@import "fonts/PFBeauSansPro.css";
 
 @COLOR_WHITE:     #fff;
 @COLOR_GRAY:      #656565;
@@ -81,4 +82,104 @@
 }
 .cssRotate(@deg: 180deg) {
   .transform(rotate(@deg));
+}
+
+
+.fontBlackItalic(){
+  font-family: pf_beausans_problack_italic;
+}
+.fontBlack(){
+  font-family: pf_beausans_problack;
+  i, i&, i & {
+    .fontBlackItalic;
+  }
+}
+
+.fontBoldItalic(){
+  font-family: pf_beausans_probold_italic;
+}
+.fontBold(){
+  font-family: pf_beausans_probold;
+  i, i&, i & {
+    .fontBoldItalic;
+  }
+}
+
+.fontBookItalic(){
+  font-family: pf_beausans_probbook_italic;
+}
+.fontBook(){
+  font-family: pf_beausans_probbook;
+  i, i&, i & {
+    .fontBookItalic;
+  }
+}
+
+.fontLightItalic(){
+  font-family: pf_beausans_prolight_italic;
+}
+.fontLight(){
+  font-family: pf_beausans_prolight;
+  i, i&, i & {
+    .fontLightItalic;
+  }
+}
+
+.fontItalic(){
+  font-family: pf_beausans_proitalic;
+}
+.fontRegular(){
+  font-family: pf_beausans_proregular;
+  i, i&, i & {
+    .fontItalic;
+  }
+}
+
+.fontSemiBoldItalic(){
+  font-family: pf_beausans_proSBdIt;
+}
+.fontSemiBold(){
+  font-family: pf_beausans_prosemibold;
+  i, i&, i & {
+    .fontSemiBoldItalic;
+  }
+}
+
+.fontThinItalic(){
+  font-family: pf_beausans_prothin_italic;
+}
+.fontThin(){
+  font-family: pf_beausans_prothin;
+  i, i&, i & {
+    .fontThinItalic;
+  }
+}
+
+.fontXThinItalic(){
+  font-family: pf_beausans_proXThIt;
+}
+.fontXThin(){
+  font-family: pf_beausans_proXTh;
+  i, i&, i & {
+    .fontXThinItalic;
+  }
+}
+
+
+
+
+
+
+
+b, strong {
+  .fontBold;
+  i {
+    .fontBoldItalic;
+  }
+}
+i {
+  .fontItalic;
+  b, strong {
+    .fontBoldItalic;
+  }
 }

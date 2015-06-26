@@ -13,6 +13,7 @@ body {
   min-height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  .fontThin;
 }
 
 .header, .section, .footer {
@@ -27,9 +28,9 @@ body {
 }
 
 .header {
+
   top: 0;
   height: 120px;
-  background: lightblue;
 
   &__logo {
     .displayBlock(visible);
@@ -55,10 +56,12 @@ body {
         padding: 25px 15px 5px;
         font-size: @FONT_SIZE_TINY;
         text-transform: uppercase;
+        .fontBook;
         &Current {
           position: relative;
           .systemLink(@COLOR_WHITE);
           background: url(../img/active_menu_item_backgroud.png) center bottom no-repeat, url("../img/active_menu_item_top.png") center top no-repeat;
+          .fontSemiBold;
         }
       }
     }
@@ -70,7 +73,6 @@ body {
 .section {
 
   top: 0;
-  background: lightgreen;
 
   .slider {
 
@@ -88,7 +90,7 @@ body {
       position: absolute;
       right: 0;
       top: 0;
-      width: 240px;
+      width: 220px;
       padding: 0 40px;
       z-index: 1;
     }
@@ -102,19 +104,32 @@ body {
         min-height: 104px;
 
         &Description {
+          position: relative;
+          height: 205px;
           &Digit {
             .displayBlock();
             font-size: 205px;
             color: @COLOR_GREEN;
             float: left;
+            .fontBlack;
+            position: absolute;
+            left: 0;
+            top: 0;
           }
           &Line1 {
-            padding-top: 25%;
+            top: 30%;
+          }
+          &Line2 {
+            top: 48%;
           }
           &Line1, &Line2 {
             .displayBlock();
             font-size: 37px;
             color: @COLOR_GRAY;
+            .fontRegular;
+            right: 0;
+            text-align: right;
+            position: absolute;
           }
         }
 
@@ -154,7 +169,6 @@ body {
 .footer {
   height: 120px;
   top: 0;
-  background: lightpink;
 }
 
 img.map, map area {
