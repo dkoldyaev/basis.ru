@@ -2,26 +2,90 @@
 
 {% block content %}
 
-    <ul class="slide_navigator">
-    {% for slide in page.slide_set.all %}
-        <li>
-            <a href="{% url 'slide_detail' slide_page_slug=page.slug slide_id=slide.id %}">
-                {% autoescape off %}{{ slide.title }}{% endautoescape %}
-            </a>
-            <div class="slide_description">
-                {% autoescape off %}
-                    {{ slide.description }}
-                {% endautoescape %}
-            </div>
-        </li>
-    {% endfor %}
-    </ul>
-
-    {% for slide in page.slide_set.all %}
-        <div class="slide">
-            <a name="{% url 'slide_detail' slide_page_slug=page.slug slide_id=slide.id %}" />
-            <img src="{{ slide.image.url }}">
+    <div class="slider__navigator_container">
+        <a href="#" class="slider__navigator_arrow slider__navigator_arrowLeft">&nbsp;</a>
+        <div class="slider__navigatorWrapper">
+            <ul class="slider__navigator" style="width: {% widthratio page.slide_set.all.count 1 100 %}%;" data-current-slide="0">
+            {% for slide in page.slide_set.all %}
+                <li style="width: {% widthratio 100 page.slide_set.all.count 1 %}%;" class="slider__navigator__item">
+                    <div class="slider__navigator__itemDescription">
+                        <div class="slider__navigator__itemDescriptionDigit">{{ slide.title_digit }}</div>
+                        <div class="slider__navigator__itemDescriptionLine1"
+                             style="{% spaceless %}
+                                     -ms-transform: rotate({{ slide.title_line1_deg }}deg);
+                                     -webkit-transform: rotate({{ slide.title_line1_deg }}deg);
+                                     transform: rotate({{ slide.title_line1_deg }}deg);{% endspaceless %}">
+                            {% autoescape off %}
+                                {{ slide.title_line1_text }}
+                            {% endautoescape %}
+                        </div>
+                        <div class="slider__navigator__itemDescriptionLine2"
+                             style="{% spaceless %}
+                                     -ms-transform: rotate({{ slide.title_line1_deg }}deg);
+                                     -webkit-transform: rotate({{ slide.title_line2_deg }}deg);
+                                     transform: rotate({{ slide.title_line2_deg }}deg);{% endspaceless %}">
+                            {% autoescape off %}
+                                {{ slide.title_line2_text }}
+                            {% endautoescape %}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
         </div>
-    {% endfor %}
+        <a href="#" class="slider__navigator_arrow slider__navigator_arrowRight">&nbsp;</a>
+    </div>
+
+    <div class="sliderWrapper">
+        <div class="slider" style="width: {% widthratio page.slide_set.all.count 1 100 %}%;">
+            {% for slide in page.slide_set.all %}
+                <div class="slider__slide_item" style="width: {% widthratio 100 page.slide_set.all.count 1 %}%;">
+                    <img src="{{ slide.image.url }}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+
+    {{ block.super }}
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            $('.section').on('click', '.slider__navigator_arrow', function(event){
+
+                event.preventDefault();
+
+                var cur_slide_num = parseInt($('.slider__navigator').attr('data-current-slide'));
+                var elements = $('.slider__slide_item:first-child, .slider__navigator');
+
+                if ($(this).hasClass('slider__navigator_arrowLeft')) {
+                    var new_slide_num = cur_slide_num-1;
+                } else {
+                    var new_slide_num = cur_slide_num+1;
+                }
+
+                if (new_slide_num >= {{ page.slide_set.all.count }} || new_slide_num < 0 || elements.data('slider_animate')) {
+                    return;}
+
+                elements.data('slider_animate', true).animate(
+                        {
+                            marginLeft: (-new_slide_num*100) + '%'
+                        },
+                        (function(new_slide_num){return function(){
+                            $(this).data('slider_animate', false);
+                            $('.slider__navigator').attr('data-current-slide', new_slide_num);
+                        };})(new_slide_num)
+                );
+
+            });
+
+        });
+
+    </script>
 
 {% endblock %}

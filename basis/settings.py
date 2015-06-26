@@ -115,6 +115,67 @@ USE_L10N = True
 USE_TZ = True
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Full',
+        'height': 300,
+        'width': '100%',
+        'toolbarCanCollapse': False,
+        'forcePasteAsPlainText': True,
+        'allowedContent':   True,
+        'extraAllowedContent': 'iframe[*];script[*]',
+    },
+    'simple': {
+        'toolbar': [
+            ['Format', '-', 'Source'],
+            ['Bold', 'Italic', 'Underline',],
+            ['Link', '-', 'NumberedList', 'BulletedList'],
+        ],
+        'height': 200,
+        'width': '100%',
+        'toolbarCanCollapse': False,
+        'forcePasteAsPlainText': True,
+        'allowedContent':   True,
+        'extraAllowedContent': 'iframe[*];script[*]',
+    },
+    'ultra_simple': {
+        'toolbar': [
+            ['Source'],
+            ['Bold', 'Italic', 'Underline',],
+        ],
+        'height': 100,
+        'width': '100%',
+        'toolbarCanCollapse': False,
+        'forcePasteAsPlainText': True,
+        'autoParagraph':    False,
+    },
+    'medium': {
+        'toolbar': [
+            ['Undo', 'Redo',
+             '-', 'Bold', 'Italic', 'Underline',
+             '-', 'Link', 'Unlink', 'Anchor',
+             '-', 'Format',
+             '-', 'Maximize',
+             '-', 'Table',
+             '-', 'Image',
+             '-', 'Source',
+             '-', 'NumberedList', 'BulletedList'
+            ],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+             '-', 'Font', 'FontSize', 'TextColor',
+             '-', 'Outdent', 'Indent',
+             '-', 'HorizontalRule',
+             '-', 'Blockquote'
+            ]
+        ],
+        'height': 150,
+        'width': '100%',
+        'toolbarCanCollapse': False,
+        'forcePasteAsPlainText': True,
+        'allowedContent':   True,
+        'extraAllowedContent': 'iframe[*];script[*]',
+    }
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/

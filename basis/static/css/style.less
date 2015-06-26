@@ -1,3 +1,162 @@
+@import "reset";
+@import "default";
+
+html {
+  height: 100%;
+  min-height: 700px;
+}
+body {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.header, .section, .footer {
+  .displayBlock;
+  .boxSizing();
+  margin: 0 auto;
+  padding: 15px;
+  width: 100%;
+  position: relative;
+  left: 0;
+  text-align: left;
+}
+
+.header {
+  top: 0;
+  height: 120px;
+  background: lightblue;
+
+  &__logo {
+    .displayBlock(visible);
+    float: left;
+    width: 70px;
+    height: auto;
+    padding-top: 75px;
+    text-align: right;
+    background: url("../img/header_logo.png") right top no-repeat;
+    font-size: @FONT_SIZE_SMALL;
+    .systemLink(@COLOR_GRAY);
+  }
+
+  &__menu_list {
+    .systemList(left, 0 0 0 30px, 0, 0);
+    float: right;
+    &__item {
+      &__link {
+        .displayBlock;
+        text-align: center;
+        .systemLink(@COLOR_GRAY);
+        min-width: 97px;
+        padding: 25px 15px 5px;
+        font-size: @FONT_SIZE_TINY;
+        text-transform: uppercase;
+        &Current {
+          position: relative;
+          .systemLink(@COLOR_WHITE);
+          background: url(../img/active_menu_item_backgroud.png) center bottom no-repeat, url("../img/active_menu_item_top.png") center top no-repeat;
+        }
+      }
+    }
+
+  }
+
+}
+
+.section {
+
+  top: 0;
+  background: lightgreen;
+
+  .slider {
+
+    .displayBlock();
+    position: relative;
+    left: 0;
+
+    &Wrapper {
+      .displayBlock();
+      width: 100%;
+    }
+
+    &__navigator_container {
+      .displayBlock();
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 240px;
+      padding: 0 40px;
+      z-index: 1;
+    }
+
+    &__navigator {
+
+      .systemList(left);
+
+      &__item {
+        text-align: center;
+        min-height: 104px;
+
+        &Description {
+          &Digit {
+            .displayBlock();
+            font-size: 205px;
+            color: @COLOR_GREEN;
+            float: left;
+          }
+          &Line1 {
+            padding-top: 25%;
+          }
+          &Line1, &Line2 {
+            .displayBlock();
+            font-size: 37px;
+            color: @COLOR_GRAY;
+          }
+        }
+
+      }
+
+      &_arrow {
+        .displayBlock();
+        .systemLink();
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 47px;
+        background: url("../img/slider_navigator_arrow.png") center center no-repeat;
+        text-indent: -9000px;
+        &Left {
+          left: 0;
+        }
+        &Right {
+          right: 0;
+          .cssRotate(180deg);
+        }
+      }
+      &Wrapper {
+        .displayBlock();
+      }
+    }
+
+    &__slide_item {
+      .displayBlock();
+      float: left;
+    }
+
+  }
+
+}
+
+.footer {
+  height: 120px;
+  top: 0;
+  background: lightpink;
+}
+
 img.map, map area {
   &:hover, &:focus, &:active {
     outline: none !important;
