@@ -12,8 +12,12 @@
 <body>
     {% block script %}
         <script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.rwdImageMaps.min.js' %}"></script>
         <script type="text/javascript">
             $(document).ready(function(){
+
+                $('img[usemap]').rwdImageMaps();
+
                 $('form').submit(function(event){
 
                     event.preventDefault();

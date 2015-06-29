@@ -150,6 +150,20 @@ i b,
 i strong {
   font-family: pf_beausans_probold_italic;
 }
+h1 {
+  font-family: pf_beausans_problack;
+  color: #bdcb21;
+  font-size: 30px;
+  margin-bottom: 1em;
+}
+h1 i,
+ih1,
+i h1 {
+  font-family: pf_beausans_problack_italic;
+}
+p {
+  margin-bottom: 1em;
+}
 html {
   height: 100%;
   min-height: 700px;
@@ -263,6 +277,98 @@ i .header__menu_list__item__linkCurrent {
 .section {
   top: 0;
 }
+.section .building__description {
+  display: block;
+  overflow: hidden;
+  float: left;
+  width: 15%;
+  left: 0;
+  top: 0;
+}
+.section .building__description p {
+  font-family: pf_beausans_prothin;
+}
+.section .building__description p i,
+i.section .building__description p,
+i .section .building__description p {
+  font-family: pf_beausans_prothin_italic;
+}
+.section .building__description strong,
+.section .building__description b {
+  font-family: pf_beausans_probold;
+}
+.section .building__description strong i,
+.section .building__description b i,
+i.section .building__description strong,
+i.section .building__description b,
+i .section .building__description strong,
+i .section .building__description b {
+  font-family: pf_beausans_probold_italic;
+}
+.section .building__floorPlan {
+  display: block;
+  overflow: hidden;
+  width: 85%;
+  padding-left: 50px;
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.section .building__floorPlan__image {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  -webkit-background-size: 100%, 100%;
+  -moz-background-size: 100%, 100%;
+  -o-background-size: 100%, 100%;
+  background-size: 100%, 100%;
+}
+.section .building__apartment_link {
+  text-decoration: none;
+  font-family: pf_beausans_probold;
+  font-size: 16px;
+  color: #ffffff;
+  text-align: center;
+  width: auto;
+  height: 28px;
+  line-height: 28px;
+  background: url("../img/linkLikeMarker.png") left -28px repeat-x;
+  position: relative;
+  overflow: visible;
+  margin: 0 12px;
+  display: inline-block;
+  display: none;
+}
+.section .building__apartment_link:active,
+.section .building__apartment_link:hover,
+.section .building__apartment_link:visited {
+  color: #ffffff;
+}
+.section .building__apartment_link i,
+i.section .building__apartment_link,
+i .section .building__apartment_link {
+  font-family: pf_beausans_probold_italic;
+}
+.section .building__apartment_link:before,
+.section .building__apartment_link:after {
+  content: ' ';
+  display: inline-block;
+  width: 12px;
+  height: 28px;
+  top: 0;
+  position: absolute;
+}
+.section .building__apartment_link:before {
+  left: -12px;
+  background: url("../img/linkLikeMarker.png") left top no-repeat;
+}
+.section .building__apartment_link:after {
+  right: -12px;
+  background: url("../img/linkLikeMarker.png") left -56px repeat-x;
+}
 .section .slider {
   display: block;
   overflow: hidden;
@@ -309,7 +415,7 @@ i .header__menu_list__item__linkCurrent {
   display: block;
   overflow: hidden;
   font-size: 205px;
-  color: #dbcd21;
+  color: #bdcb21;
   float: left;
   font-family: pf_beausans_problack;
   position: absolute;
@@ -349,7 +455,7 @@ i .section .slider__navigator__itemDescriptionLine2 {
 .section .slider__navigator_arrow {
   display: block;
   overflow: hidden;
-  color: #dbcd21;
+  color: #bdcb21;
   text-decoration: none;
   position: absolute;
   top: 0;
@@ -361,7 +467,7 @@ i .section .slider__navigator__itemDescriptionLine2 {
 .section .slider__navigator_arrow:active,
 .section .slider__navigator_arrow:hover,
 .section .slider__navigator_arrow:visited {
-  color: #dbcd21;
+  color: #bdcb21;
 }
 .section .slider__navigator_arrowLeft {
   left: 0;

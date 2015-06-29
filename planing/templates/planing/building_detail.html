@@ -1,34 +1,70 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block script %}
+
     {{ block.super }}
+
+    <script type="text/javascript" src="{% static 'js/jquery.rwdImageMaps.min.js' %}"></script>
+
     <script type="text/javascript">
+
         $(document).ready(function(){
-            $('.apartment_area').bind('click', function(event){
+
+            $('.apartment_area').bind('click mouseover', function(event){
                 event.preventDefault();
                 var area = $(this);
                 area.blur();
-                $('.apartment_detail').hide()
-                $('#apartment_' + area.attr('data-target')).show();
-                $('#building_floor_plan__image').css({
-                    background: 'url('+area.attr('data-image')+')'
+                $('.building__apartment_link').hide();
+                $('#apartment_' + area.attr('data-target')).css({display:'inline-block'});
+                $('.building__floorPlan__image').css({
+                    backgroundImage: 'url('+area.attr('data-image')+')'
                 });
             });
+
         });
+
     </script>
+
 {% endblock %}
 
 {% block content %}
 
 {% with building=current_building %}
-    <h1>{{ building.name }}</h1>
 
-    {% autoescape off %}
-        {{ building.description }}
-    {% endautoescape %}f
+    <div class="building__description">
 
-    <div class="building_floor_plan" >
-        <img src="{{ building.plan.url }}" id="building_floor_plan__image" usemap="#building_map" />
+        <h1>{% spaceless %}
+            {% for building in buildings_list %}
+                {% if building == current_building %}
+                    {{ forloop.counter }}.
+                {% endif %}
+            {% endfor %}
+            {{ building.name }}
+            {% endspaceless %}
+        </h1>
+
+        <div class="building__descriptionInner">
+
+            {% autoescape off %}
+                {{ building.description }}
+            {% endautoescape %}
+
+            {% for apartament in building.apartments_set.all %}
+                <a href="{% url 'apartment_detail' building_id=building.id apartment_id=apartament.id %}"
+                   class="building__apartment_link"
+                   id="apartment_{{ apartament.id }}">
+                    посмотреть планировку
+                </a>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <div class="building__floorPlan" >
+
+        <img src="{{ building.plan.url }}" class="building__floorPlan__image" usemap="#building_map" />
         <map id="building_map" name="building_map">
             {% for apartment in building.apartments_set.all %}
                 {% for area in apartment.get_plan_fill_areas %}
@@ -42,18 +78,9 @@
                 {% endfor %}
             {% endfor %}
         </map>
+
     </div>
-    <ul>
-        {% for apartament in building.apartments_set.all %}
-            <li style="display: none;" id="apartment_{{ apartament.id }}" class="apartment_detail">
-                <a href="{% url 'apartment_detail' building_id=building.id apartment_id=apartament.id %}">
-                    <img src="{{ apartament.plan.url }}" style="display: block; width: 300px; height: auto;" />
-                </a>
-                {% autoescape off %}
-                {% endautoescape %}
-            </li>
-        {% endfor %}
-    </ul>
+
 {% endwith %}
 
 {% for building in buildings_list %}

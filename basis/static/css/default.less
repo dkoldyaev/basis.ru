@@ -2,7 +2,7 @@
 
 @COLOR_WHITE:     #fff;
 @COLOR_GRAY:      #656565;
-@COLOR_GREEN:     #dbcd21;
+@COLOR_GREEN:     #bdcb21;
 @COLOR_DARK_GREEN:#4a5e00;
 @COLOR_YELLOW:    #efe100;
 
@@ -167,6 +167,46 @@
 
 
 
+.linkLikeMarker(@font_size: @FONT_SIZE_DEFAULT){
+
+  @BACKGROUND_HEIGHT: 28px;
+
+  .systemLink(@COLOR_WHITE);
+
+  .fontBold;
+  font-size: @font_size;
+  color: #ffffff;
+  text-align: center;
+  width: auto;
+  height: @BACKGROUND_HEIGHT;
+  line-height: @BACKGROUND_HEIGHT;
+  position: relative;
+  background: url("../img/linkLikeMarker.png") left (-@BACKGROUND_HEIGHT) repeat-x;
+  position: relative;
+  overflow: visible;
+  margin: 0 12px;
+
+  display: inline-block;
+
+  &:before, &:after {
+    content: ' ';
+    display: inline-block;
+    width: 12px;
+    height: 28px;
+    top: 0;
+    position: absolute;
+  }
+
+  &:before {
+    left: -12px;
+    background: url("../img/linkLikeMarker.png") left top no-repeat;
+  }
+  &:after {
+    right: -12px;
+    background: url("../img/linkLikeMarker.png") left (-@BACKGROUND_HEIGHT*2) repeat-x;
+  }
+
+}
 
 
 
@@ -182,4 +222,15 @@ i {
   b, strong {
     .fontBoldItalic;
   }
+}
+
+h1 {
+  .fontBlack;
+  color: @COLOR_GREEN;
+  font-size: @FONT_SIZE_LARGE;
+  margin-bottom: 1em;
+}
+
+p {
+  margin-bottom: 1em;
 }

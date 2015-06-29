@@ -74,6 +74,52 @@ body {
 
   top: 0;
 
+  .building {
+
+    @DESCRIPTION_COL_WIDTH: 15%;
+
+    &__description {
+
+      .displayBlock();
+      float: left;
+      width: @DESCRIPTION_COL_WIDTH;
+      left: 0;
+      top: 0;
+
+      p {
+        .fontThin;
+      }
+
+      strong, b {
+        .fontBold;
+      }
+
+    }
+
+    &__floorPlan {
+
+      .displayBlock();
+      width: (100%-@DESCRIPTION_COL_WIDTH);
+      padding-left: 50px;
+      float: left;
+      .boxSizing();
+
+      &__image {
+        .displayBlock();
+        width: 100%;
+        height: auto;
+        .backgroundSize(100%, 100%);
+      }
+
+    }
+
+    &__apartment_link {
+      .linkLikeMarker();
+      display: none;
+    }
+
+  }
+
   .slider {
 
     .displayBlock();
