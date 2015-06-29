@@ -35,6 +35,8 @@ def building_detail(request, building_id) :
 
 def apartment(request, building_id, apartment_id) :
 
+    buildings_list= Building.objects.filter_active(hide_not_active=not request.user.is_staff)
+
     try:
         apart = Apartment.objects.get_active(
             hide_not_active=not request.user.is_staff,
@@ -47,7 +49,8 @@ def apartment(request, building_id, apartment_id) :
         request,
         'planing/apartament_detail.html',
         {
-            'apartment':    apart
+            'apartment':        apart,
+            'buildings_list':   buildings_list,
         },
         context_instance=RequestContext(request, processors=[feedback_form])
     )

@@ -2,19 +2,69 @@
 
 {% block content %}
 
-    <h1>{{ apartment.title }}</h1>
+    <div class="apartment__building_list">
+        {% for building in buildings_list %}
 
-    <img src="{{ apartment.plan.url }}" />
+            <div class="apartment__building_list__building">
 
-    {% autoescape off %}
-        {{ apartment.description }}
-    {% endautoescape %}
+                <h2 class="apartment__building_list__building_name">{{ forloop.counter }}. {{ building.name }}</h2>
 
-    <div style="display: block; overflow: hidden; border: 3px dashed red; padding: 1em; margin: 1em;">
-        <h2>Форма заказа</h2>
-        {% include 'feedback/inc/feedback_form.html' with form=feedback_form %}
+                <a href="{% url 'building_detail' building_id=building.id %}"
+                   class="apartment__building_list__building_imageLink">{% spaceless %}
+                    <img src="{{ building.plan.url }}" height="120"
+                         class="apartment__building_list__building_image" />
+                {% endspaceless %}</a>
+
+                <br />
+                <a href="{% url 'building_detail' building_id=building.id %}"
+                   class="apartment__building_list__building_link">
+                    посмотреть планировку
+                </a>
+
+            </div>
+
+        {% endfor %}
     </div>
 
-    <a href="{% url 'building_detail' building_id=apartment.building_id %}">назад к списку квартир</a>
+    <div class="apartment__plan">
+
+        <img src="{{ apartment.plan.url }}" class="apartment__plan_image"  />
+
+    </div>
+
+    <div class="apartment__description">
+
+        <p>Дом: {{ apartment.building.name }}</p>
+
+        {% autoescape off %}
+            {{ apartment.description }}
+        {% endautoescape %}
+
+        <div class="apartment__description__price">
+            <span class="apartment__description__price_prefix">от</span>
+            <span class="apartment__description__price_value">{{ apartment.price }}</span>
+            <span class="apartment__description__price_unit_outer">
+                <span class="apartment__description__price_unit_up">тыс</span>
+                <span class="apartment__description__price_unit">руб./м²</span>
+            </span>
+        </div>
+
+        <div class="apartment__description__navigator">
+
+{#            <a href="#"#}
+{#               class="apartment__description__navigator_link apartment__description__navigator_linkFeedback">#}
+{#                оставить заявку#}
+{#            </a>#}
+
+            <a href="{% url 'building_detail' building_id=apartment.building.id %}"
+               class="apartment__description__navigator_link apartment__description__navigator_linkGoBack">
+                вернуться
+            </a>
+
+{#            {% include 'feedback/inc/feedback_form.html' with form=feedback_form %}#}
+
+        </div>
+
+    </div>
 
 {% endblock %}

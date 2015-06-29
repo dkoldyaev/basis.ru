@@ -21,7 +21,7 @@ body {
   .displayBlock;
   .boxSizing();
   margin: 0 auto;
-  padding: 15px;
+  padding: 15px 90px 20px 35px;
   width: 100%;
   position: relative;
   left: 0;
@@ -142,7 +142,7 @@ body {
           .displayBlock();
           float: left;
           width: @OTHER_BUILDING_ITEM_TITLE_WIDTH;
-          padding-top: 60px;
+          padding-top: 50px;
 
           h2 {
             .h1;
@@ -162,8 +162,8 @@ body {
           padding-left: 15px;
           &_image {
             .displayBlock();
-            width: 100%;
-            height: auto;
+            max-width: 100%;
+            height: 130px;
           }
         }
 
@@ -173,6 +173,123 @@ body {
 
           p {
             margin-bottom: 0;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  .apartment {
+
+    &__building_list, &__plan, &__description {
+
+      .displayBlock();
+      float: left;
+      .boxSizing();
+
+    }
+
+    &__building_list {
+
+      width: 35%;
+      padding-right: 25px;
+
+      &__building {
+
+        .displayBlock();
+        padding-bottom: 50px;
+
+        &_image {
+          margin-bottom: 10px;
+          max-width: 100%;
+        }
+
+        &_name {
+          .h1;
+        }
+        &_link {
+          .systemLink(@COLOR_BLACK);
+        }
+
+      }
+
+    }
+
+    &__plan {
+
+      width: 33%;
+      padding: 0 25px;
+
+      &_image {
+        .displayBlock();
+        width: 100%;
+      }
+
+    }
+
+    &__description {
+
+      width: 32%;
+      padding-left: 25px;
+
+      &__price {
+
+        .displayBlock();
+        padding-top: 65px;
+
+        &_prefix, &_value, &_unit_up, &_unit_outer, &_unit_up, &_unit {
+          .displayBlock();
+          color: @COLOR_GRAY;
+          .fontThin;
+          float: left;
+        }
+
+        &_prefix {
+          font-size: 33px;
+          padding-top: 46px;
+        }
+        &_value {
+          color: @COLOR_GREEN;
+          font-size: 87px;
+          .fontBlack;
+          letter-spacing: -10px;
+          padding-right: 10px;
+        }
+        &_unit_up {
+          font-size: 27px;
+          margin-bottom: -11px;
+          padding-top: 21px;
+        }
+        &_unit {
+          font-size: 44px;
+          .fontBold;
+          clear: both;
+        }
+
+      }
+
+      &__navigator {
+
+        .displayBlock();
+        text-align: right;
+        padding-top: 120px;
+
+        &_link {
+
+          display: inline-block;
+          margin-left: 22px;
+
+          &Feedback {
+            .systemLink(@COLOR_DARK_GREEN);
+            .fontBold;
+          }
+          &GoBack {
+            .systemLink(@COLOR_BLACK);
+            .fontRegular;
           }
 
         }
