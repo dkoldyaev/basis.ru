@@ -150,6 +150,26 @@ i b,
 i strong {
   font-family: pf_beausans_probold_italic;
 }
+.h1 {
+  font-family: pf_beausans_problack;
+  color: #bdcb21;
+  font-size: 30px;
+  margin-bottom: 1em;
+}
+.h1 i,
+i.h1,
+i .h1 {
+  font-family: pf_beausans_problack_italic;
+}
+.h1 a {
+  color: #bdcb21;
+  text-decoration: none;
+}
+.h1 a:active,
+.h1 a:hover,
+.h1 a:visited {
+  color: #bdcb21;
+}
 h1 {
   font-family: pf_beausans_problack;
   color: #bdcb21;
@@ -160,6 +180,15 @@ h1 i,
 ih1,
 i h1 {
   font-family: pf_beausans_problack_italic;
+}
+h1 a {
+  color: #bdcb21;
+  text-decoration: none;
+}
+h1 a:active,
+h1 a:hover,
+h1 a:visited {
+  color: #bdcb21;
 }
 p {
   margin-bottom: 1em;
@@ -177,6 +206,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   font-family: pf_beausans_prothin;
+  color: #000000;
 }
 body i,
 ibody,
@@ -282,8 +312,6 @@ i .header__menu_list__item__linkCurrent {
   overflow: hidden;
   float: left;
   width: 15%;
-  left: 0;
-  top: 0;
 }
 .section .building__description p {
   font-family: pf_beausans_prothin;
@@ -304,27 +332,6 @@ i.section .building__description b,
 i .section .building__description strong,
 i .section .building__description b {
   font-family: pf_beausans_probold_italic;
-}
-.section .building__floorPlan {
-  display: block;
-  overflow: hidden;
-  width: 85%;
-  padding-left: 50px;
-  float: left;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.section .building__floorPlan__image {
-  display: block;
-  overflow: hidden;
-  width: 100%;
-  height: auto;
-  -webkit-background-size: 100%, 100%;
-  -moz-background-size: 100%, 100%;
-  -o-background-size: 100%, 100%;
-  background-size: 100%, 100%;
 }
 .section .building__apartment_link {
   text-decoration: none;
@@ -368,6 +375,101 @@ i .section .building__apartment_link {
 .section .building__apartment_link:after {
   right: -12px;
   background: url("../img/linkLikeMarker.png") left -56px repeat-x;
+}
+.section .building__apartment_description {
+  display: none;
+}
+.section .building__floorPlan {
+  display: block;
+  overflow: hidden;
+  width: 85%;
+  padding-left: 50px;
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.section .building__floorPlan__image {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  -webkit-background-size: 100%, 100%;
+  -moz-background-size: 100%, 100%;
+  -o-background-size: 100%, 100%;
+  background-size: 100%, 100%;
+}
+.section .building__otherBuildings {
+  display: block;
+  overflow: hidden;
+  margin-left: 15%;
+  padding-left: 50px;
+  float: left;
+  clear: left;
+}
+.section .building__otherBuildings__building {
+  display: block;
+  overflow: hidden;
+  margin-top: 60px;
+}
+.section .building__otherBuildings__building_title {
+  display: block;
+  overflow: hidden;
+  float: left;
+  width: 305px;
+  padding-top: 60px;
+}
+.section .building__otherBuildings__building_title h2 {
+  font-family: pf_beausans_problack;
+  color: #bdcb21;
+  font-size: 30px;
+  margin-bottom: 1em;
+}
+.section .building__otherBuildings__building_title h2 i,
+i.section .building__otherBuildings__building_title h2,
+i .section .building__otherBuildings__building_title h2 {
+  font-family: pf_beausans_problack_italic;
+}
+.section .building__otherBuildings__building_title h2 a {
+  color: #bdcb21;
+  text-decoration: none;
+}
+.section .building__otherBuildings__building_title h2 a:active,
+.section .building__otherBuildings__building_title h2 a:hover,
+.section .building__otherBuildings__building_title h2 a:visited {
+  color: #bdcb21;
+}
+.section .building__otherBuildings__building_title_link {
+  color: #000000;
+  text-decoration: none;
+}
+.section .building__otherBuildings__building_title_link:active,
+.section .building__otherBuildings__building_title_link:hover,
+.section .building__otherBuildings__building_title_link:visited {
+  color: #000000;
+}
+.section .building__otherBuildings__building_preview {
+  display: block;
+  overflow: hidden;
+  float: left;
+  min-width: 250px;
+  max-width: 640px;
+  padding-left: 15px;
+}
+.section .building__otherBuildings__building_preview_image {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+.section .building__otherBuildings__building_description {
+  padding-left: 30px;
+  display: block;
+  overflow: hidden;
+}
+.section .building__otherBuildings__building_description p {
+  margin-bottom: 0;
 }
 .section .slider {
   display: block;

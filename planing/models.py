@@ -36,7 +36,7 @@ class Apartment(BaseModel):
 
     building =  models.ForeignKey('planing.Building', related_name='apartments_set', blank=False, null=False)
 
-    description=RichTextField(blank=True, null=True, verbose_name=u'Описание', help_text=u'Площадь, количество комнат и т.д.')
+    description=RichTextField(blank=True, null=True, config_name='ultra_simple', verbose_name=u'Описание', help_text=u'Площадь, количество комнат и т.д.')
 
     order =     models.IntegerField(blank=False, null=False, default=0, verbose_name=u'Сортировка')
 

@@ -3,14 +3,12 @@ __author__ = 'dkoldyaev'
 
 from django.utils.safestring import mark_safe
 from django.forms import widgets
-from django.db.models.fields.files import ImageFieldFile
+from django.db.models.fields.files import ImageFieldFile, FieldFile
 
 from basis.templatetags.admin_preview import admin_preview
 from basis.templatetags.image_helper import ImageHelper
 
 class ImageWidget(widgets.ClearableFileInput) :
-
-    template_name =     'image_widget.html'
 
     def render(self, name, value, attrs=None):
 
@@ -46,6 +44,90 @@ class ImageWidget(widgets.ClearableFileInput) :
                 image_name =    image_name,
                 image_size_x =  image.size[0] if image is not None else 0,
                 image_size_y =  image.size[1] if image is not None else 0
+            )
+
+            template_parts.append(original_info)
+
+            if not self.is_required :
+
+                checkbox_name = self.clear_checkbox_name(name)
+                checkbox_id = self.clear_checkbox_id(checkbox_name)
+                checkbox = widgets.CheckboxInput().render(checkbox_name, False, attrs={'id': checkbox_id})
+
+                delete_info = u'''
+
+                    <dt>Удалить</dt>
+                    <dd>{delete_checkbox}</dd>
+
+                '''.format(delete_checkbox=checkbox)
+
+                template_parts.append(delete_info)
+
+        upload_info = u'''
+
+            <dt>Изменить</dt>
+            <dd><input id="{input_id}" name="{input_name}" type="file"></dd>
+
+        '''.format(input_id=final_attrs.get('id'), input_name=final_attrs.get('name'))
+
+        template_parts.append(upload_info)
+
+        template = u'''
+
+            {image_preview}
+
+            <div style="display:block; overflow:hidden; min-width: 100px;">
+                <dl>
+
+                {template_parts}
+
+                </dl>
+            </div>
+
+        '''.format(
+            image_preview=image_preview,
+            template_parts=''.join(template_parts),
+            **final_attrs
+        )
+
+        return mark_safe(template)
+
+class SVGImageWidget(widgets.ClearableFileInput):
+
+    background_image = False
+
+    def __init__(self, *args, **kwargs):
+
+        self.background_image = kwargs.pop('background_image', False)
+
+        super(SVGImageWidget, self).__init__(*args, **kwargs)
+
+    def render(self, name, value, attrs=None):
+
+        final_attrs = self.build_attrs(attrs, type=self.input_type, name=name)
+        template_parts = []
+
+        image_preview = ''
+
+        if value and isinstance(value, FieldFile) and hasattr(value, "url") :
+
+            image_preview_src = value.url
+            if self.background_image :
+                image_preview = u'<img src="{image_preview_src}" ' \
+                                u'style="float:left; margin:0 1em 1em 0; background:url({background_image})" />'.format(image_preview_src=image_preview_src, background_image=self.background_image)
+            else:
+                image_preview = u'<img src="{image_preview_src}" style="float:left; margin:0 1em 1em 0;" />'.format(image_preview_src=image_preview_src)
+
+            image_name = value.url.split('/')[-1]
+
+            original_info = u'''
+
+                    <dt>Оригинал</dt>
+                    <dd><a href="{image_src}" target="_blank">{image_name}</a></dd>
+
+            '''.format(
+                image_src =     value.url,
+                image_name =    image_name
             )
 
             template_parts.append(original_info)

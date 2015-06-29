@@ -14,6 +14,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   .fontThin;
+  color: @COLOR_BLACK;
 }
 
 .header, .section, .footer {
@@ -77,14 +78,14 @@ body {
   .building {
 
     @DESCRIPTION_COL_WIDTH: 15%;
+    @DESCRIPTION_COL_PADDING: 50px;
+    @FLOOR_MARGIN_BOTTOM: 60px;
 
     &__description {
 
       .displayBlock();
       float: left;
       width: @DESCRIPTION_COL_WIDTH;
-      left: 0;
-      top: 0;
 
       p {
         .fontThin;
@@ -96,11 +97,19 @@ body {
 
     }
 
+    &__apartment_link {
+      .linkLikeMarker();
+      display: none;
+    }
+    &__apartment_description {
+      display: none;
+    }
+
     &__floorPlan {
 
       .displayBlock();
       width: (100%-@DESCRIPTION_COL_WIDTH);
-      padding-left: 50px;
+      padding-left: @DESCRIPTION_COL_PADDING;
       float: left;
       .boxSizing();
 
@@ -113,9 +122,63 @@ body {
 
     }
 
-    &__apartment_link {
-      .linkLikeMarker();
-      display: none;
+    &__otherBuildings {
+
+      .displayBlock();
+      margin-left: @DESCRIPTION_COL_WIDTH;
+      padding-left: @DESCRIPTION_COL_PADDING;
+      float: left;
+      clear: left;
+
+      @OTHER_BUILDING_ITEM_TITLE_WIDTH: 305px;
+
+      &__building {
+
+        .displayBlock();
+        margin-top: @FLOOR_MARGIN_BOTTOM;
+
+        &_title {
+
+          .displayBlock();
+          float: left;
+          width: @OTHER_BUILDING_ITEM_TITLE_WIDTH;
+          padding-top: 60px;
+
+          h2 {
+            .h1;
+          }
+
+          &_link {
+            .systemLink(@COLOR_BLACK);
+          }
+
+        }
+
+        &_preview {
+          .displayBlock();
+          float: left;
+          min-width: 250px;
+          max-width: 640px;
+          padding-left: 15px;
+          &_image {
+            .displayBlock();
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        &_description {
+          padding-left: 30px;
+          .displayBlock();
+
+          p {
+            margin-bottom: 0;
+          }
+
+        }
+
+      }
+
     }
 
   }

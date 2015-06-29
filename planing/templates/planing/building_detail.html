@@ -5,18 +5,16 @@
 
     {{ block.super }}
 
-    <script type="text/javascript" src="{% static 'js/jquery.rwdImageMaps.min.js' %}"></script>
-
     <script type="text/javascript">
 
         $(document).ready(function(){
 
-            $('.apartment_area').bind('click mouseover', function(event){
+            $('.apartment_area').bind('click', function(event){
                 event.preventDefault();
                 var area = $(this);
                 area.blur();
-                $('.building__apartment_link').hide();
-                $('#apartment_' + area.attr('data-target')).css({display:'inline-block'});
+                $('.building__apartment_link, .building__apartment_description').hide();
+                $('.apartment_' + area.attr('data-target')).css({display:'inline-block'});
                 $('.building__floorPlan__image').css({
                     backgroundImage: 'url('+area.attr('data-image')+')'
                 });
@@ -46,16 +44,19 @@
 
         <div class="building__descriptionInner">
 
-            {% autoescape off %}
-                {{ building.description }}
-            {% endautoescape %}
-
             {% for apartament in building.apartments_set.all %}
-                <a href="{% url 'apartment_detail' building_id=building.id apartment_id=apartament.id %}"
-                   class="building__apartment_link"
-                   id="apartment_{{ apartament.id }}">
-                    посмотреть планировку
-                </a>
+                <div class="building__apartment_description apartment_{{ apartament.id }}">
+
+                    {% autoescape off %}
+                        {{ apartament.description }}
+                    {% endautoescape %}
+
+                    <a href="{% url 'apartment_detail' building_id=building.id apartment_id=apartament.id %}"
+                       class="building__apartment_link apartment_{{ apartament.id }}">
+                        посмотреть планировку
+                    </a>
+
+                </div>
             {% endfor %}
 
         </div>
@@ -83,10 +84,49 @@
 
 {% endwith %}
 
-{% for building in buildings_list %}
-    {% if current_building != building %}
-        <h2><a href="{% url 'building_detail' building_id=building.id %}">{{ building.name }}</a></h2>
-    {% endif %}
-{% endfor %}
+<div class="building__otherBuildings">
+    {% for building in buildings_list %}
+        {% if current_building != building %}
+
+            <div class="building__otherBuildings__building">
+
+                <div class="building__otherBuildings__building_title">
+
+                    <h2>{% spaceless %}
+                        <a href="{% url 'building_detail' building_id=building.id %}">
+                            {{ forloop.counter }}.
+                            {{ building.name }}
+                        </a>
+                    {% endspaceless %}</h2>
+
+                    <a href="{% url 'building_detail' building_id=building.id %}"
+                       class="building__otherBuildings__building_link">{% spaceless %}
+                        Посмотреть планировку
+                    {% endspaceless %}</a>
+
+                </div>
+            
+                <div class="building__otherBuildings__building_preview">
+
+                    <a href="{% url 'building_detail' building_id=building.id %}">
+                        <img src="{{ building.plan.url }}"
+                             class="building__otherBuildings__building_preview_image" />
+                    </a>
+                    
+                </div>
+
+                <div class="building__otherBuildings__building_description">
+
+                    {% autoescape off %}
+                        {{ building.description }}
+                    {% endautoescape %}
+
+                </div>
+
+            </div>
+
+        {% endif %}
+    {% endfor %}
+</div>
 
 {% endblock %}

@@ -1,5 +1,6 @@
 @import "fonts/PFBeauSansPro.css";
 
+@COLOR_BLACK:     #000;
 @COLOR_WHITE:     #fff;
 @COLOR_GRAY:      #656565;
 @COLOR_GREEN:     #bdcb21;
@@ -224,11 +225,17 @@ i {
   }
 }
 
-h1 {
+.h1 {
   .fontBlack;
   color: @COLOR_GREEN;
   font-size: @FONT_SIZE_LARGE;
   margin-bottom: 1em;
+  a {
+    .systemLink(@COLOR_GREEN);
+  }
+}
+h1 {
+  .h1;
 }
 
 p {
