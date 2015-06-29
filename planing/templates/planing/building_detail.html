@@ -9,14 +9,18 @@
 
         $(document).ready(function(){
 
-            $('.apartment_area').bind('click', function(event){
-                event.preventDefault();
+            $('.apartment_area').bind('mouseover', function(event){
                 var area = $(this);
                 area.blur();
                 $('.building__apartment_link, .building__apartment_description').hide();
                 $('.apartment_' + area.attr('data-target')).css({display:'inline-block'});
                 $('.building__floorPlan__image').css({
                     backgroundImage: 'url('+area.attr('data-image')+')'
+                });
+            }).bind('mouseout', function(event){
+                $('.building__apartment_link, .building__apartment_description').hide();
+                $('.building__floorPlan__image').css({
+                    backgroundImage: 'none'
                 });
             });
 
