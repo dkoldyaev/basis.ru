@@ -70,9 +70,22 @@
 
     <footer class="footer">
         {% block footer %}
-            телефон: {% siteblock "phone" %}
+
+            <div class="footer__feedback">
+                <a href="{% url 'feedback' %}" class="footer__feedback_link">Написать нам</a>
+                <div class="footer__feedback_formContainer">
+                    {% include 'feedback/inc/feedback_form.html' %}
+                </div>
+            </div>
+
+            <div class="footer__phone">
+                <a href="{% url 'order_call' %}" class="footer__phone_link">Написать нам</a>
+                <div class="footer__phone_formContainer">
+{#                    {% include 'feedback/inc/order_call_form.html' %}#}
+                    {% siteblock "phone" %}
+                </div>
+            </div>
         {% endblock %}
-        {% include 'feedback/inc/order_call_form.html' with form=order_call_form %}
     </footer>
 </body>
 </html>

@@ -441,7 +441,67 @@ body {
   height: 120px;
   top: 0;
 
+  &__feedback, &__phone {
 
+    .displayBlock(visible);
+    float: left;
+    margin-right: 15px;
+    position: relative;
+
+    &_link {
+      .displayBlock();
+      .systemLink();
+      width: 42px;
+      height: 30px;
+      background-position: 0 -30px;
+      background-repeat: no-repeat;
+      text-indent: -9000px;
+    }
+
+    &:hover {
+      .footer__feedback_link, .footer__phone_link {
+        background-position: 0 0;
+      }
+      .footer__phone_formContainer {
+        .displayBlock();
+        width: 136px;
+        height: 35px;
+        background: url("../img/phone_background.png");
+        margin: 5px 0 0 20px;
+        padding: 12px 0 0 15px;
+        .boxSizing();
+      }
+      .footer__feedback_formContainer {
+        .displayBlock();
+        width: 136px;
+        height: 35px;
+        background: url("../img/phone_background.png");
+        margin: 5px 0 0 20px;
+      }
+    }
+
+    &_formContainer {
+      display: none;
+      position: absolute;
+      .fontBold;
+      color: @COLOR_WHITE;
+    }
+
+  }
+
+  &__phone {
+
+    &_link {
+      background-image: url("../img/feedback_phone.png");
+    }
+
+
+
+  }
+
+  &__feedback_link {
+    background-image: url("../img/feedback_mail.png");
+  }
 
 }
 
