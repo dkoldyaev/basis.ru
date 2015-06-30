@@ -1,12 +1,4 @@
 
     {% for news_item in news %}
-        <li>
-            <h2>
-                <a href="{% url 'news_detail' news_id=news_item.id news_slug=news_item.slug %}">{{ news_item.title }}</a>
-                {{ news_item.date }}
-            </h2>
-            {% autoescape off %}
-                {{ news_item.announce }}
-            {% endautoescape %}
-        </li>
+        {% include 'inc/news_item.html' with news_item=news_item detail=False %}
     {% endfor %}

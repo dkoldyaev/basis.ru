@@ -62,7 +62,7 @@ class ImageHelper:
     @staticmethod
     def mask(image, mask):
         result = image.copy()
-        result.putalpha(mask.convert('L'))
+        result = Image.alpha_composite(result.convert('RGBA'), mask.convert('RGBA'))
         return result
 
     @staticmethod

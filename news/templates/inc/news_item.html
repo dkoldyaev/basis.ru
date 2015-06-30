@@ -1,0 +1,41 @@
+{% load news_images %}
+
+        <li class="news__list__item">
+
+            <h2 class="news__list__item_title">
+                <a href="{% url 'news_detail' news_id=news_item.id news_slug=news_item.slug %}"
+                   class="news__list__item_title_link">
+                    {{ news_item.title }}
+                </a>
+                <span class="news__list__item_title_date">
+                    {{ news_item.date }}
+                </span>
+            </h2>
+
+            <div class="news__list__item_announce">
+
+                {% if detail and news_item.image %}
+                    <p>
+                        <img src="{{ news_item.image.url|news_image_fit }}"
+                             class="news__list__item_announce_image">
+                    </p>
+                {% endif %}
+
+                {% autoescape off %}
+                    {% if detail %}
+                        {{ news_item.text }}
+                    {% else %}
+                        {{ news_item.announce }}
+                    {% endif %}
+                {% endautoescape %}
+
+                {% if detail %}
+                    <a href="{% url 'news_list' %}"
+                       class="news__list__item_announce_readMoreLink">вернуться</a>
+                {% else %}
+                    <a href="{% url 'news_detail' news_id=news_item.id news_slug=news_item.slug %}"
+                       class="news__list__item_announce_readMoreLink">прочитать</a>
+                {% endif %}
+
+            </div>
+        </li>

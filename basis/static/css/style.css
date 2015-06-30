@@ -232,7 +232,6 @@ i body {
 .header {
   top: 0;
   height: 120px;
-  margin-bottom: -70px;
 }
 .header__logo {
   display: block;
@@ -815,6 +814,111 @@ i .section .slider__navigator__itemDescriptionLine2 {
   overflow: hidden;
   width: 100%;
   height: auto;
+}
+.section .news__list {
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+.section .news__list > li {
+  display: block;
+  overflow: hidden;
+  float: none;
+  margin: 0 0 30px;
+  padding: 0;
+}
+.section .news__list__item_title {
+  display: block;
+  overflow: hidden;
+  text-align: right;
+  width: 270px;
+  padding-right: 45px;
+  float: left;
+}
+.section .news__list__item_title_link {
+  display: block;
+  overflow: hidden;
+  font-family: pf_beausans_probold;
+  color: #4a5e00;
+  text-decoration: none;
+  font-size: 26px;
+  margin-bottom: 0.5em;
+}
+.section .news__list__item_title_link i,
+i.section .news__list__item_title_link,
+i .section .news__list__item_title_link {
+  font-family: pf_beausans_probold_italic;
+}
+.section .news__list__item_title_link:active,
+.section .news__list__item_title_link:hover,
+.section .news__list__item_title_link:visited {
+  color: #4a5e00;
+}
+.section .news__list__item_title_date {
+  color: #000000;
+  font-size: 20px;
+}
+.section .news__list__item_announce {
+  display: block;
+  overflow: hidden;
+  font-family: pf_beausans_prothin;
+  padding-right: 180px;
+  line-height: 18px;
+}
+.section .news__list__item_announce i,
+i.section .news__list__item_announce,
+i .section .news__list__item_announce {
+  font-family: pf_beausans_prothin_italic;
+}
+.section .news__list__item_announce_readMoreLink {
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  font-family: pf_beausans_probold;
+  font-size: 16px;
+  color: #ffffff;
+  text-align: center;
+  width: auto;
+  height: 28px;
+  line-height: 28px;
+  background: url("../img/linkLikeMarker.png") left -28px repeat-x;
+  position: relative;
+  overflow: visible;
+  margin: 0 12px;
+  display: inline-block;
+  float: right;
+  margin-right: -165px;
+}
+.section .news__list__item_announce_readMoreLink:active,
+.section .news__list__item_announce_readMoreLink:hover,
+.section .news__list__item_announce_readMoreLink:visited {
+  color: #ffffff;
+}
+.section .news__list__item_announce_readMoreLink i,
+i.section .news__list__item_announce_readMoreLink,
+i .section .news__list__item_announce_readMoreLink {
+  font-family: pf_beausans_probold_italic;
+}
+.section .news__list__item_announce_readMoreLink:before,
+.section .news__list__item_announce_readMoreLink:after {
+  content: ' ';
+  display: inline-block;
+  width: 12px;
+  height: 28px;
+  top: 0;
+  position: absolute;
+}
+.section .news__list__item_announce_readMoreLink:before {
+  left: -12px;
+  background: url("../img/linkLikeMarker.png") left top no-repeat;
+}
+.section .news__list__item_announce_readMoreLink:after {
+  right: -12px;
+  background: url("../img/linkLikeMarker.png") left -56px repeat-x;
+}
+.section .news__list__nextPage {
+  display: none;
 }
 .footer {
   height: 120px;

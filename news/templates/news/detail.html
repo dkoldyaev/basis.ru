@@ -4,16 +4,8 @@
 
 {% block content %}
 
-    <h1>{{ news_item.title }}</h1>
-
-    {% if news_item.image %}
-        <img src="{{ news_item.image.url|news_image_fit }}" />
-    {% endif %}
-
-    {% autoescape off %}
-        {{ news_item.text }}
-    {% endautoescape %}
-
-    <a href="{% url 'news_list' %}">вернуться к списку новостей</a>
+    <ul class="news__list">
+        {% include 'inc/news_item.html' with news=news_item detail=True %}
+    </ul>
 
 {% endblock %}

@@ -11,7 +11,12 @@
                 return self.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop);
             }
 
-            $('body').on('click', '.next_page', function(event){
+            function tryNewsScroll() {
+                var more_link = $('.news__list__item:last-child');
+                return $(window).height() + getBodyScrollTop() >= more_link.position().top - 50
+            }
+
+            $('body').on('click', '.news__list__nextPage', function(event){
 
                 event.preventDefault();
 
@@ -20,7 +25,7 @@
                     type:       'get',
                     dataType:   'json',
                     success:    (function(next_page_link){return function(data){
-                        $('#news_list').append(data.news_data);
+                        $('.news__list').append(data.news_data);
                         if (data.next_page) {
                             next_page_link.attr('href', '?page='+data.next_page);
                         } else {
@@ -31,20 +36,21 @@
 
             });
 
-
             $(window).bind('scroll', function(){
 
-                var more_link = $('.next_page');
+                if ($('.news__list__nextPage').size()) {
 
-                if ($('.next_page').size()) {
-
-                    if ($(window).height() + getBodyScrollTop() >= more_link.position().top - 50) {
-                        more_link.click();
+                    if (tryNewsScroll()) {
+                        $('.news__list__nextPage').click();
                     }
 
                 }
 
             });
+
+            if (tryNewsScroll()) {
+                $('.news__list__nextPage').click();
+            }
 
         });
 
@@ -54,15 +60,12 @@
 
 {% block content %}
 
-    <h1>Новости</h1>
-    <p>К сожалению, сделать подгрузки при прокрутке я не успеваю (</p>
-
-    <ul id="news_list">
-        {% include 'inc/news_list.html' with news=news %}
+    <ul class="news__list">
+        {% include 'inc/news_list.html' with news=news detail=False %}
     </ul>
 
     {% if next_page %}
-        <a href="{% url 'news_list' %}?page={{ next_page }}" class="next_page">Далее</a>
+        <a href="{% url 'news_list' %}?page={{ next_page }}" class="news__list__nextPage">Далее</a>
     {% endif %}
 
 {% endblock %}
