@@ -232,6 +232,7 @@ i body {
 .header {
   top: 0;
   height: 120px;
+  margin-bottom: -70px;
 }
 .header__logo {
   display: block;
@@ -656,26 +657,37 @@ i .section .apartment__description__navigator_linkGoBack {
   overflow: hidden;
   width: 100%;
 }
+.section .sliderWrapper .wrap_image {
+  opacity: 0;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  float: left;
+  margin-left: -100%;
+}
 .section .slider__navigator_container {
   display: block;
   overflow: hidden;
   position: absolute;
   right: 0;
   top: 0;
-  width: 220px;
   padding: 0 40px;
   z-index: 1;
+  width: 100%;
 }
 .section .slider__navigator {
   display: block;
   overflow: hidden;
   padding: 0;
   margin: 0;
+  min-height: 205px;
+  float: right;
 }
 .section .slider__navigator > li {
   display: block;
   overflow: hidden;
-  float: left;
+  float: none;
   margin: 0;
   padding: 0;
 }
@@ -689,36 +701,34 @@ i .section .apartment__description__navigator_linkGoBack {
 }
 .section .slider__navigator__itemDescriptionDigit {
   display: block;
-  overflow: hidden;
+  overflow: visible;
   font-size: 205px;
   color: #bdcb21;
   float: left;
   font-family: pf_beausans_problack;
-  position: absolute;
   left: 0;
   top: 0;
+  letter-spacing: -23px;
+  padding-right: 23px;
 }
 .section .slider__navigator__itemDescriptionDigit i,
 i.section .slider__navigator__itemDescriptionDigit,
 i .section .slider__navigator__itemDescriptionDigit {
   font-family: pf_beausans_problack_italic;
 }
-.section .slider__navigator__itemDescriptionLine1 {
-  top: 30%;
-}
-.section .slider__navigator__itemDescriptionLine2 {
-  top: 48%;
-}
 .section .slider__navigator__itemDescriptionLine1,
 .section .slider__navigator__itemDescriptionLine2 {
   display: block;
-  overflow: hidden;
+  overflow: visible;
   font-size: 37px;
   color: #656565;
-  font-family: pf_beausans_proregular;
-  right: 0;
+  right: 10px;
   text-align: right;
-  position: absolute;
+  white-space: nowrap;
+  top: 75px;
+  float: right;
+  position: relative;
+  font-family: pf_beausans_proregular;
 }
 .section .slider__navigator__itemDescriptionLine1 i,
 .section .slider__navigator__itemDescriptionLine2 i,
@@ -728,17 +738,42 @@ i .section .slider__navigator__itemDescriptionLine1,
 i .section .slider__navigator__itemDescriptionLine2 {
   font-family: pf_beausans_proitalic;
 }
+.section .slider__navigator__itemDescriptionLine1 i,
+.section .slider__navigator__itemDescriptionLine2 i,
+i.section .slider__navigator__itemDescriptionLine1,
+i.section .slider__navigator__itemDescriptionLine2,
+i .section .slider__navigator__itemDescriptionLine1,
+i .section .slider__navigator__itemDescriptionLine2 {
+  font-family: pf_beausans_proitalic;
+}
+.section .slider__navigator__itemDescriptionLine1Fake,
+.section .slider__navigator__itemDescriptionLine2Fake {
+  position: static;
+  float: right;
+  color: red;
+}
+.section .slider__navigator__itemDescriptionLine1 {
+  font-size: 53px;
+  top: 35px;
+}
+.section .slider__navigator__itemDescriptionLine2 {
+  font-size: 23px;
+  clear: right;
+  top: -40px;
+}
 .section .slider__navigator_arrow {
   display: block;
   overflow: hidden;
   color: #bdcb21;
   text-decoration: none;
-  position: absolute;
+  position: relative;
   top: 0;
   bottom: 0;
   width: 47px;
   background: url("../img/slider_navigator_arrow.png") center center no-repeat;
   text-indent: -9000px;
+  min-height: 205px;
+  float: right;
 }
 .section .slider__navigator_arrow:active,
 .section .slider__navigator_arrow:hover,
@@ -757,13 +792,29 @@ i .section .slider__navigator__itemDescriptionLine2 {
   transform: rotate(180deg);
 }
 .section .slider__navigatorWrapper {
+  position: relative;
   display: block;
   overflow: hidden;
+  float: right;
 }
 .section .slider__slide_item {
   display: block;
   overflow: hidden;
   float: left;
+  -webkit-background-size: 100%, 100%;
+  -moz-background-size: 100%, 100%;
+  -o-background-size: 100%, 100%;
+  background-size: 100%, 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.section .slider__slide_item > img {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
 }
 .footer {
   height: 120px;

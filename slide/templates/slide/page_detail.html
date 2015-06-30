@@ -3,44 +3,75 @@
 {% block content %}
 
     <div class="slider__navigator_container">
-        <a href="#" class="slider__navigator_arrow slider__navigator_arrowLeft">&nbsp;</a>
+        <a href="#" class="slider__navigator_arrow slider__navigator_arrowRight">&nbsp;</a>
         <div class="slider__navigatorWrapper">
-            <ul class="slider__navigator" style="width: {% widthratio page.slide_set.all.count 1 100 %}%;" data-current-slide="0">
+            <ul class="slider__navigator" data-current-slide="0">
             {% for slide in page.slide_set.all %}
-                <li style="width: {% widthratio 100 page.slide_set.all.count 1 %}%;" class="slider__navigator__item">
+                <li class="slider__navigator__item"
+                    style="{% spaceless %}
+                        {% if not forloop.first %}display:none;{% endif %}
+                        width: {{ slide.title_width }}px;
+                    {% endspaceless %}">
                     <div class="slider__navigator__itemDescription">
+
                         <div class="slider__navigator__itemDescriptionDigit">{{ slide.title_digit }}</div>
+
                         <div class="slider__navigator__itemDescriptionLine1"
                              style="{% spaceless %}
                                      -ms-transform: rotate({{ slide.title_line1_deg }}deg);
                                      -webkit-transform: rotate({{ slide.title_line1_deg }}deg);
-                                     transform: rotate({{ slide.title_line1_deg }}deg);{% endspaceless %}">
+                                     transform: rotate({{ slide.title_line1_deg }}deg);
+                                     top: {{ slide.title_line1_top }}px;
+                                     right: {{ slide.title_line1_right }}px;
+                             {% endspaceless %}">
                             {% autoescape off %}
                                 {{ slide.title_line1_text }}
                             {% endautoescape %}
                         </div>
+{#                        <div class="slider__navigator__itemDescriptionLine1 slider__navigator__itemDescriptionLine1Fake">#}
+{#                            {% autoescape off %}#}
+{#                                {{ slide.title_line1_text }}#}
+{#                            {% endautoescape %}#}
+{#                        </div>#}
+
                         <div class="slider__navigator__itemDescriptionLine2"
                              style="{% spaceless %}
                                      -ms-transform: rotate({{ slide.title_line1_deg }}deg);
                                      -webkit-transform: rotate({{ slide.title_line2_deg }}deg);
-                                     transform: rotate({{ slide.title_line2_deg }}deg);{% endspaceless %}">
+                                     transform: rotate({{ slide.title_line2_deg }}deg);
+                                     top: {{ slide.title_line2_top }}px;
+                                     right: {{ slide.title_line2_right }}px;
+                             {% endspaceless %}">
                             {% autoescape off %}
                                 {{ slide.title_line2_text }}
                             {% endautoescape %}
                         </div>
+{#                        <div class="slider__navigator__itemDescriptionLine2 slider__navigator__itemDescriptionLine2Fake">#}
+{#                            {% autoescape off %}#}
+{#                                {{ slide.title_line2_text }}#}
+{#                            {% endautoescape %}#}
+{#                        </div>#}
                     </div>
                 </li>
             {% endfor %}
             </ul>
         </div>
-        <a href="#" class="slider__navigator_arrow slider__navigator_arrowRight">&nbsp;</a>
+        <a href="#" class="slider__navigator_arrow slider__navigator_arrowLeft">&nbsp;</a>
     </div>
 
     <div class="sliderWrapper">
-        <div class="slider" style="width: {% widthratio page.slide_set.all.count 1 100 %}%;">
+        <img src="{{ page.slide_set.all.0.image.url }}" style="opacity: 0;" class="wrap_image" />
+        <div class="slider">
+            <img src="{{ page.slide_set.all.0.image.url }}" style="opacity: 0;" class="wrap_image" />
             {% for slide in page.slide_set.all %}
-                <div class="slider__slide_item" style="width: {% widthratio 100 page.slide_set.all.count 1 %}%;">
-                    <img src="{{ slide.image.url }}">
+                <div class="slider__slide_item"
+                     style="{% spaceless %}
+                             background-image: url('{{ slide.image.url }}');
+                             background-position: {{ slide.image_position }};
+                             background-size: {{ slide.image_size }};
+                             {% if not forloop.first %}opacity: 0;{% endif %}
+                     {% endspaceless %}">
+                    <img src="{{ page.slide_set.all.0.image.url }}" class="wrap_image" />
                 </div>
             {% endfor %}
         </div>
@@ -60,8 +91,19 @@
 
                 event.preventDefault();
 
+                var slide_backgrounds = [
+                        {% for slide in page.slide_set.all %}
+                            {
+                                url:    '{{ slide.image.url }}',
+                                pos:    '{{ slide.image_position }}',
+                                size:   '{{ slide.image_size }}'
+                            }
+                            {% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    ];
+
                 var cur_slide_num = parseInt($('.slider__navigator').attr('data-current-slide'));
-                var elements = $('.slider__slide_item:first-child, .slider__navigator');
+                var navigator = $('.slider__navigator');
 
                 if ($(this).hasClass('slider__navigator_arrowLeft')) {
                     var new_slide_num = cur_slide_num-1;
@@ -69,18 +111,42 @@
                     var new_slide_num = cur_slide_num+1;
                 }
 
-                if (new_slide_num >= {{ page.slide_set.all.count }} || new_slide_num < 0 || elements.data('slider_animate')) {
+                if (new_slide_num >= {{ page.slide_set.all.count }} || new_slide_num < 0) {
                     return;}
 
-                elements.data('slider_animate', true).animate(
-                        {
-                            marginLeft: (-new_slide_num*100) + '%'
-                        },
-                        (function(new_slide_num){return function(){
-                            $(this).data('slider_animate', false);
-                            $('.slider__navigator').attr('data-current-slide', new_slide_num);
-                        };})(new_slide_num)
-                );
+                var new_slide_description = $($('.slider__navigator__item')[new_slide_num]);
+                var old_slide_description = $($('.slider__navigator__item')[cur_slide_num]);
+
+                var new_slide = $($('.slider__slide_item')[new_slide_num]);
+                var old_slide = $($('.slider__slide_item')[cur_slide_num]);
+
+                new_slide_description.css({position:'absolute', display:'block'});
+                var new_slide_description_size = new_slide_description.outerWidth();
+
+                if (new_slide_num > cur_slide_num) {
+                    new_slide_description
+                            .css({position:'absolute'})
+                            .fadeIn((function(navigator, new_slide_description){return function(){
+                                navigator.animate({width:new_slide_description.outerWidth()+'px'});
+                            };})(navigator, new_slide_description));
+                    old_slide_description.fadeOut();
+                    new_slide.animate(
+                            {opacity: 1},
+                            (function(new_slide_num, navigator){
+                                navigator.attr('data-current-slide', new_slide_num);
+                            })(new_slide_num, navigator));
+
+                } else {
+                    old_slide_description
+                            .fadeOut((function(navigator, new_slide_description){return function(){
+                                navigator.animate({width:new_slide_description.outerWidth()+'px'});
+                            };})(navigator, new_slide_description));
+                    old_slide.animate(
+                            {opacity: 0},
+                            (function(new_slide_num, navigator){
+                                navigator.attr('data-current-slide', new_slide_num);
+                            })(new_slide_num, navigator));
+                }
 
             });
 

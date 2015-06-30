@@ -32,6 +32,7 @@ body {
 
   top: 0;
   height: 120px;
+  margin-bottom: -70px;
 
   &__logo {
     .displayBlock(visible);
@@ -309,6 +310,16 @@ body {
     &Wrapper {
       .displayBlock();
       width: 100%;
+
+      .wrap_image {
+        opacity: 0;
+        .displayBlock();
+        width: 100%;
+        height: auto;
+        float: left;
+        margin-left: -100%;
+      }
+
     }
 
     &__navigator_container {
@@ -316,14 +327,16 @@ body {
       position: absolute;
       right: 0;
       top: 0;
-      width: 220px;
       padding: 0 40px;
       z-index: 1;
+      width: 100%;
     }
 
     &__navigator {
 
-      .systemList(left);
+      .systemList();
+      min-height: 205px;
+      float: right;
 
       &__item {
         text-align: center;
@@ -333,29 +346,43 @@ body {
           position: relative;
           height: 205px;
           &Digit {
-            .displayBlock();
+            .displayBlock(visible);
             font-size: 205px;
             color: @COLOR_GREEN;
             float: left;
             .fontBlack;
-            position: absolute;
             left: 0;
             top: 0;
-          }
-          &Line1 {
-            top: 30%;
-          }
-          &Line2 {
-            top: 48%;
+            letter-spacing: -23px;
+            padding-right: 23px;
           }
           &Line1, &Line2 {
-            .displayBlock();
+            .displayBlock(visible);
             font-size: 37px;
             color: @COLOR_GRAY;
             .fontRegular;
-            right: 0;
+            right: 10px;
             text-align: right;
-            position: absolute;
+            white-space: nowrap;
+            top: 75px;
+            float: right;
+            position: relative;
+            .fontRegular;
+            &Fake {
+              //opacity: 0;
+              position: static;
+              float: right;
+              color: red;
+            }
+          }
+          &Line1 {
+            font-size: 53px;
+            top: 35px;
+          }
+          &Line2 {
+            font-size: 23px;
+            clear: right;
+            top: -40px;
           }
         }
 
@@ -364,12 +391,14 @@ body {
       &_arrow {
         .displayBlock();
         .systemLink();
-        position: absolute;
+        position: relative;
         top: 0;
         bottom: 0;
         width: 47px;
         background: url("../img/slider_navigator_arrow.png") center center no-repeat;
         text-indent: -9000px;
+        min-height: 205px;
+        float: right;
         &Left {
           left: 0;
         }
@@ -379,13 +408,28 @@ body {
         }
       }
       &Wrapper {
+        position: relative;
         .displayBlock();
+        float: right;
       }
     }
 
     &__slide_item {
       .displayBlock();
       float: left;
+      .backgroundSize(100%, 100%);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+
+      & > img {
+        .displayBlock();
+        width: 100%;
+        height: auto;
+
+      }
+
     }
 
   }
@@ -393,8 +437,12 @@ body {
 }
 
 .footer {
+
   height: 120px;
   top: 0;
+
+
+
 }
 
 img.map, map area {
