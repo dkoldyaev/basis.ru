@@ -333,8 +333,10 @@ body {
 
     &__navigator {
 
+      @NAVIGATOR_HEIGHT: 130px;
+
       .systemList();
-      min-height: 205px;
+      min-height: @NAVIGATOR_HEIGHT;
       float: right;
 
       &__item {
@@ -343,10 +345,10 @@ body {
 
         &Description {
           position: relative;
-          height: 205px;
+          height: @NAVIGATOR_HEIGHT;
           &Digit {
             .displayBlock(visible);
-            font-size: 205px;
+            font-size: 135px;
             color: @COLOR_GREEN;
             float: left;
             .fontBlack;
@@ -377,6 +379,7 @@ body {
           &Line1 {
             font-size: 53px;
             top: 35px;
+            line-height: 32px;
           }
           &Line2 {
             font-size: 23px;
@@ -396,7 +399,7 @@ body {
         width: 47px;
         background: url("../img/slider_navigator_arrow.png") center center no-repeat;
         text-indent: -9000px;
-        min-height: 205px;
+        min-height: @NAVIGATOR_HEIGHT;
         float: right;
         &Left {
           left: 0;
