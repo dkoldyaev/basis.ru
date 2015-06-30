@@ -7,6 +7,7 @@
     <title></title>
     {% block style %}
         <link href="{% static 'css/style.css' %}" rel="stylesheet" media="all">
+        <link href="{% static 'css/form_sets.css' %}" rel="stylesheet" media="all">
     {% endblock %}
 </head>
 <body>
@@ -18,32 +19,80 @@
 
                 $('img[usemap]').rwdImageMaps();
 
-                $('form').submit(function(event){
-
-                    event.preventDefault();
-
-                    $.ajax({
-                        url:    $(this).attr('action'),
-                        type:   $(this).attr('method'),
-                        data:   $(this).serialize(),
-                        success:(function(form){return function(data) {
-                            form.find('.error_list').remove();
-                            if (data['success']) {
-                                alert('ok');
-                            } else {
-                                for (key in data['errors']) {
-                                    var input = form.find('*[name='+key+']');
-                                    var ul = $('<ul style="color:red" class="error_list"></ul>');
-                                    for (er_num in data['errors'][key]) {
-                                        ul.append($('<li>'+data['errors'][key][er_num]+'</li>'));
+                $('body')
+                        .on('focus', '.input__field', function(){
+                            $(this).parent('span.input').addClass('input--filled');})
+                        .on('blur', '.input__field', function(){
+                            if (!$(this).val() || $(this).val() == '') {
+                                $(this).parent('span.input').removeClass('input--filled');
+                            }})
+                        .on('click', '.footer__phone_link', function(event){
+                            event.preventDefault();
+                            $('.footer__phone_formContainer').toggle();})
+                        .on('click', '.footer__feedback_link', function(event){
+                            event.preventDefault();
+                            $('.popUpShadow').show();
+                            $('.footer__feedback_formContainer').show()})
+                        .on('submit', '.footer__feedback_formContainer form', function(event){
+                            event.preventDefault();
+                            $.ajax({
+                                url:    $(this).attr('action'),
+                                type:   $(this).attr('method'),
+                                data:   $(this).serialize(),
+                                success:(function(form){return function(data) {
+                                    form.find('.error_list').remove();
+                                    if (data['success']) {
+                                        $('.footer__feedback_formContainer').hide();
+                                        $('.popUpMessage').show();
+                                        $('.popUpMessage_text').text('спасибо за Ваше сообщение!');
+                                    } else {
+                                        for (key in data['errors']) {
+                                            var input = form.find('*[name='+key+']');
+                                            var ul = $('<ul style="color:red" class="error_list"></ul>');
+                                            for (er_num in data['errors'][key]) {
+                                                ul.append($('<li>'+data['errors'][key][er_num]+'</li>'));
+                                            }
+                                            ul.insertBefore(input);
+                                        }
                                     }
-                                    ul.insertBefore(input);
-                                }
-                            }
-                        };})($(this))
-                    });
+                                };})($(this))
+                            });
+                        })
+                        .on('click', '.popUpMessage_close', function(event){
+                            event.preventDefault();
+                            $('.popUpMessage, .popUpShadow, .popUpBlock').hide();
+                        })
+                        .on('click', '.popUpShadow', function(event){
+                            event.preventDefault();
+                            $('.popUpMessage, .popUpShadow, .popUpBlock').hide();
+                        });
 
-                });
+{#                $('form').submit(function(event){#}
+{##}
+{#                    event.preventDefault();#}
+{##}
+{#                    $.ajax({#}
+{#                        url:    $(this).attr('action'),#}
+{#                        type:   $(this).attr('method'),#}
+{#                        data:   $(this).serialize(),#}
+{#                        success:(function(form){return function(data) {#}
+{#                            form.find('.error_list').remove();#}
+{#                            if (data['success']) {#}
+{#                                alert('ok');#}
+{#                            } else {#}
+{#                                for (key in data['errors']) {#}
+{#                                    var input = form.find('*[name='+key+']');#}
+{#                                    var ul = $('<ul style="color:red" class="error_list"></ul>');#}
+{#                                    for (er_num in data['errors'][key]) {#}
+{#                                        ul.append($('<li>'+data['errors'][key][er_num]+'</li>'));#}
+{#                                    }#}
+{#                                    ul.insertBefore(input);#}
+{#                                }#}
+{#                            }#}
+{#                        };})($(this))#}
+{#                    });#}
+{##}
+{#                });#}
             });
         </script>
     {% endblock %}
@@ -73,8 +122,8 @@
 
             <div class="footer__feedback">
                 <a href="{% url 'feedback' %}" class="footer__feedback_link">Написать нам</a>
-                <div class="footer__feedback_formContainer">
-                    {% include 'feedback/inc/feedback_form.html' %}
+                <div class="footer__feedback_formContainer formContainer popUpBlock">
+                    {% include 'feedback/inc/feedback_form.html' with form=feedback_form %}
                 </div>
             </div>
 
@@ -87,5 +136,10 @@
             </div>
         {% endblock %}
     </footer>
+    <div class="popUpMessage">
+        <span class="popUpMessage_text"></span>
+        <a href="#" class="popUpMessage_close"></a>
+    </div>
+    <div class="popUpShadow"></div>
 </body>
 </html>

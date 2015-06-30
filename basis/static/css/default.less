@@ -238,6 +238,17 @@ h1 {
   .h1;
 }
 
+.h2(@color: @COLOR_WHITE) {
+  .fontBold;
+  font-size: 25px;
+  a {
+    .systemLink(@color);
+  }
+}
+h2 {
+  .h2();
+}
+
 p {
   margin-bottom: 1em;
 }

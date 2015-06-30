@@ -82,6 +82,7 @@ TEMPLATES = [
 
                 'menu.context_processors.menu_items',
                 'feedback.context_processors.order_call_form',
+                'feedback.context_processors.feedback_form'
             ],
         },
     },
