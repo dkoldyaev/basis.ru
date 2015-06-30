@@ -10,7 +10,7 @@ from news.models import News
 
 def list(request):
 
-    page_size = 2
+    page_size = 10
 
     try:
         current_page =  int(request.GET.get('page', '1'))
