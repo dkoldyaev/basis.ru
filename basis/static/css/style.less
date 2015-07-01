@@ -568,7 +568,7 @@ body {
 
 .footer {
 
-  height: 120px;
+  height: 140px;
   top: 0;
   overflow: visible;
 
@@ -653,6 +653,29 @@ body {
 
   &__feedback_link {
     background-image: url("../img/feedback_mail.png");
+  }
+
+  &__copyright, &__author {
+    .displayBlock();
+    .fontThin;
+    color: @COLOR_GRAY;
+    text-align: left;
+    position: absolute;
+    font-size: @FONT_SIZE_SMALL;
+  }
+  &__copyright {
+    left: 35px;
+    bottom: 20px;
+  }
+  &__author {
+    .systemLink(@COLOR_GRAY);
+    text-align: right;
+    padding-right: 35px;
+    padding-top: 3px;
+    background: url("../img/vseyasno_logo.png") right top no-repeat;
+    right: 35px;
+    bottom: 20px;
+    min-height: 31px;
   }
 
 }

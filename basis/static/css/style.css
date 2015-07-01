@@ -2016,7 +2016,7 @@ i .section .news__list__item_announce_readMoreLink {
   display: none;
 }
 .footer {
-  height: 120px;
+  height: 140px;
   top: 0;
   overflow: visible;
 }
@@ -2128,6 +2128,44 @@ i .footer__phone .footer__feedback_formContainer input[type=submit] {
 }
 .footer__feedback_link {
   background-image: url("../img/feedback_mail.png");
+}
+.footer__copyright,
+.footer__author {
+  display: block;
+  overflow: hidden;
+  font-family: pf_beausans_prothin;
+  color: #656565;
+  text-align: left;
+  position: absolute;
+  font-size: 12px;
+}
+.footer__copyright i,
+.footer__author i,
+i.footer__copyright,
+i.footer__author,
+i .footer__copyright,
+i .footer__author {
+  font-family: pf_beausans_prothin_italic;
+}
+.footer__copyright {
+  left: 35px;
+  bottom: 20px;
+}
+.footer__author {
+  color: #656565;
+  text-decoration: none;
+  text-align: right;
+  padding-right: 35px;
+  padding-top: 3px;
+  background: url("../img/vseyasno_logo.png") right top no-repeat;
+  right: 35px;
+  bottom: 20px;
+  min-height: 31px;
+}
+.footer__author:active,
+.footer__author:hover,
+.footer__author:visited {
+  color: #656565;
 }
 .popUpBlock {
   z-index: 200;
