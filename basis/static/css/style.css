@@ -955,6 +955,12 @@ i .section .news__list__item_title_link {
 .section .news__list__item_title_date {
   color: #000000;
   font-size: 20px;
+  font-family: pf_beausans_prothin;
+}
+.section .news__list__item_title_date i,
+i.section .news__list__item_title_date,
+i .section .news__list__item_title_date {
+  font-family: pf_beausans_prothin_italic;
 }
 .section .news__list__item_announce {
   display: block;
