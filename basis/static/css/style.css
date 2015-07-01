@@ -309,6 +309,10 @@ i .header__menu_list__item__link {
 .header__menu_list__item__link:hover {
   background: url(../img/active_menu_item_backgroud.png) 50% 100% no-repeat, url("../img/active_menu_item_top.png") 50% -100% no-repeat;
   color: #ffffff;
+  transition: 300ms;
+}
+.header__menu_list__item__link:not(:hover) {
+  transition: 300ms;
 }
 .header__menu_list__item__linkCurrent {
   position: relative;

@@ -64,6 +64,10 @@ body {
         &:hover {
           background: url(../img/active_menu_item_backgroud.png) 50% 100% no-repeat, url("../img/active_menu_item_top.png") 50% -100% no-repeat;
           color: @COLOR_WHITE;
+          transition: 300ms;
+        }
+        &:not(:hover) {
+          transition: 300ms;
         }
         &Current {
           position: relative;
