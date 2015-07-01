@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -77,13 +78,94 @@
         </div>
     </div>
 
+    {% if page.pie_menu %}
+        <div id='piemenu' data-wheelnav
+             data-wheelnav-slicepath='DonutSlice'
+             data-wheelnav-rotateoff
+             data-wheelnav-navangle='310'
+             data-wheelnav-cssmode
+             data-wheelnav-init>
+            {% for slide in page.slide_set.all %}
+                <div data-wheelnav-navitemtext='{{ forloop.counter }}' onmouseup='swithToSlideNum({{ forloop.counter0 }});'></div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
 {% endblock %}
 
 {% block script %}
 
     {{ block.super }}
 
+    <script type="text/javascript" src="{% static 'js/wheelnav.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/raphael.min.js' %}"></script>
+
     <script type="text/javascript">
+
+        function swithToSlideNum(new_slide_num){
+
+            var navigator = $('.slider__navigator');
+            var cur_slide_num = parseInt($('.slider__navigator').attr('data-current-slide'));
+
+            if (new_slide_num === '+1') {
+                new_slide_num = cur_slide_num + 1;
+            } else if (new_slide_num === '-1') {
+                new_slide_num = cur_slide_num - 1;
+            } else {
+                if (cur_slide_num < new_slide_num) {
+                    while (cur_slide_num < {{ page.slide_set.all.count }} && cur_slide_num <= new_slide_num - 1) {
+                        swithToSlideNum('+1');
+                        cur_slide_num++;
+                    }
+                } else {
+                    while (cur_slide_num >= 0 && cur_slide_num >= new_slide_num + 1) {
+                        swithToSlideNum('-1');
+                        cur_slide_num--;
+                    }
+                }
+                return;
+            }
+
+            if (new_slide_num >= {{ page.slide_set.all.count }} || new_slide_num < 0) {
+                return;}
+
+            var new_slide_description = $($('.slider__navigator__item')[new_slide_num]);
+            var old_slide_description = $($('.slider__navigator__item')[cur_slide_num]);
+
+            var new_slide = $($('.slider__slide_item')[new_slide_num]);
+            var old_slide = $($('.slider__slide_item')[cur_slide_num]);
+
+            new_slide_description.css({position:'absolute', display:'block'});
+            var new_slide_description_size = new_slide_description.outerWidth();
+
+            if (new_slide_num > cur_slide_num) {
+                new_slide_description
+                        .css({position:'absolute'})
+                        .fadeIn((function(navigator, new_slide_description){return function(){
+                            navigator.animate({width:new_slide_description.outerWidth()+'px'});
+                        };})(navigator, new_slide_description));
+                old_slide_description.fadeOut();
+                new_slide.animate(
+                        {opacity: 1},
+                        (function(new_slide_num, navigator){
+                            navigator.attr('data-current-slide', new_slide_num);
+                        })(new_slide_num, navigator));
+
+            } else {
+                old_slide_description
+                        .fadeOut((function(navigator, new_slide_description){return function(){
+                            navigator.animate({width:new_slide_description.outerWidth()+'px'});
+                            };})(navigator, new_slide_description));
+                    old_slide.animate(
+                            {opacity: 0},
+                            (function(new_slide_num, navigator){
+                                navigator.attr('data-current-slide', new_slide_num);
+                            })(new_slide_num, navigator));
+            }
+
+            piemenu.navigateWheel(new_slide_num);
+
+        }
 
         $(document).ready(function(){
 
@@ -91,64 +173,24 @@
 
                 event.preventDefault();
 
-                var slide_backgrounds = [
-                        {% for slide in page.slide_set.all %}
-                            {
-                                url:    '{{ slide.image.url }}',
-                                pos:    '{{ slide.image_position }}',
-                                size:   '{{ slide.image_size }}'
-                            }
-                            {% if not forloop.last %},{% endif %}
-                        {% endfor %}
-                    ];
-
-                var cur_slide_num = parseInt($('.slider__navigator').attr('data-current-slide'));
-                var navigator = $('.slider__navigator');
-
                 if ($(this).hasClass('slider__navigator_arrowLeft')) {
-                    var new_slide_num = cur_slide_num-1;
+                    swithToSlideNum('-1');
                 } else {
-                    var new_slide_num = cur_slide_num+1;
-                }
-
-                if (new_slide_num >= {{ page.slide_set.all.count }} || new_slide_num < 0) {
-                    return;}
-
-                var new_slide_description = $($('.slider__navigator__item')[new_slide_num]);
-                var old_slide_description = $($('.slider__navigator__item')[cur_slide_num]);
-
-                var new_slide = $($('.slider__slide_item')[new_slide_num]);
-                var old_slide = $($('.slider__slide_item')[cur_slide_num]);
-
-                new_slide_description.css({position:'absolute', display:'block'});
-                var new_slide_description_size = new_slide_description.outerWidth();
-
-                if (new_slide_num > cur_slide_num) {
-                    new_slide_description
-                            .css({position:'absolute'})
-                            .fadeIn((function(navigator, new_slide_description){return function(){
-                                navigator.animate({width:new_slide_description.outerWidth()+'px'});
-                            };})(navigator, new_slide_description));
-                    old_slide_description.fadeOut();
-                    new_slide.animate(
-                            {opacity: 1},
-                            (function(new_slide_num, navigator){
-                                navigator.attr('data-current-slide', new_slide_num);
-                            })(new_slide_num, navigator));
-
-                } else {
-                    old_slide_description
-                            .fadeOut((function(navigator, new_slide_description){return function(){
-                                navigator.animate({width:new_slide_description.outerWidth()+'px'});
-                            };})(navigator, new_slide_description));
-                    old_slide.animate(
-                            {opacity: 0},
-                            (function(new_slide_num, navigator){
-                                navigator.attr('data-current-slide', new_slide_num);
-                            })(new_slide_num, navigator));
+                    swithToSlideNum('+1');
                 }
 
             });
+
+            {% if page.pie_menu %}
+                // Да, это глобальный объект
+                piemenu = new wheelnav('piemenu');
+                piemenu.clockwise = false;
+                piemenu.wheelRadius = piemenu.wheelRadius * 0.83;
+                piemenu.navItemsContinuous = true;
+                piemenu.sliceAngle = 39;
+                piemenu.createWheel();
+{#                piemenu.setTooltips([{% for slide in page.slide_set.all %}{{ forloop.counter }}{% if not forloop.last %},{% endif %}{% endfor %}]);#}
+            {% endif %}
 
         });
 

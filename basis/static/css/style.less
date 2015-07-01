@@ -632,3 +632,29 @@ img.map, map area {
   }
   outline: none !important;
 }
+
+#piemenu > svg { width: 100%; height: 100%; }
+#piemenu { height: 400px; width: 400px; margin:auto; }
+@media (max-width: 400px) { #piemenu { height: 300px; width: 300px; } }
+
+[class|=wheelnav-piemenu-slice-basic] { fill: @COLOR_YELLOW; stroke: none; }
+[class|=wheelnav-piemenu-slice-selected] { fill: @COLOR_GREEN; stroke: none; }
+[class|=wheelnav-piemenu-slice-hover] { fill: @COLOR_GREEN;  stroke: none; fill-opacity: 0.77; cursor: pointer; }
+
+[class|=wheelnav-piemenu-title-basic] { fill: @COLOR_WHITE; stroke: none; }
+[class|=wheelnav-piemenu-title-selected] { fill: @COLOR_WHITE; stroke: none; }
+[class|=wheelnav-piemenu-title-hover] { fill: @COLOR_WHITE; stroke: none; cursor: pointer; }
+[class|=wheelnav-piemenu-title] > tspan { .fontBlack; font-size: 35px; }
+
+@media (min-width: 1376px) {
+  [class|=wheelnav-piemenu-title] > tspan { .fontBlack; font-size: 35px; }
+}
+
+#piemenu {
+  .displayBlock();
+  position: absolute;
+  left: -1.25%;
+  top: 36.75%;
+  width: 22%;
+  height: 47.6%;
+}

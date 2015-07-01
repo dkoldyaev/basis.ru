@@ -48,6 +48,8 @@ class SlidePage(BaseModel) :
     name =      models.CharField(blank=False, null=False, max_length=255, verbose_name=u'Название группы слайдов')
     slug =      models.SlugField(blank=True, null=False)
 
+    pie_menu =  models.BooleanField(blank=False, null=False, default=False, verbose_name=u'Включить круговой переключатель слайдов')
+
     objects =   SlidePageQuerySet.as_manager()
 
     class Meta:

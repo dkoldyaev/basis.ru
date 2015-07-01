@@ -1123,3 +1123,74 @@ img.map:active,
 map area:active {
   outline: none !important;
 }
+#piemenu > svg {
+  width: 100%;
+  height: 100%;
+}
+#piemenu {
+  height: 400px;
+  width: 400px;
+  margin: auto;
+}
+@media (max-width: 400px) {
+  #piemenu {
+    height: 300px;
+    width: 300px;
+  }
+}
+[class|=wheelnav-piemenu-slice-basic] {
+  fill: #efe100;
+  stroke: none;
+}
+[class|=wheelnav-piemenu-slice-selected] {
+  fill: #bdcb21;
+  stroke: none;
+}
+[class|=wheelnav-piemenu-slice-hover] {
+  fill: #bdcb21;
+  stroke: none;
+  fill-opacity: 0.77;
+  cursor: pointer;
+}
+[class|=wheelnav-piemenu-title-basic] {
+  fill: #ffffff;
+  stroke: none;
+}
+[class|=wheelnav-piemenu-title-selected] {
+  fill: #ffffff;
+  stroke: none;
+}
+[class|=wheelnav-piemenu-title-hover] {
+  fill: #ffffff;
+  stroke: none;
+  cursor: pointer;
+}
+[class|=wheelnav-piemenu-title] > tspan {
+  font-family: pf_beausans_problack;
+  font-size: 35px;
+}
+[class|=wheelnav-piemenu-title] > tspan i,
+i[class|=wheelnav-piemenu-title] > tspan,
+i [class|=wheelnav-piemenu-title] > tspan {
+  font-family: pf_beausans_problack_italic;
+}
+@media (min-width: 1376px) {
+  [class|=wheelnav-piemenu-title] > tspan {
+    font-family: pf_beausans_problack;
+    font-size: 35px;
+  }
+  [class|=wheelnav-piemenu-title] > tspan i,
+  i[class|=wheelnav-piemenu-title] > tspan,
+  i [class|=wheelnav-piemenu-title] > tspan {
+    font-family: pf_beausans_problack_italic;
+  }
+}
+#piemenu {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  left: -1.25%;
+  top: 36.75%;
+  width: 22%;
+  height: 47.6%;
+}
