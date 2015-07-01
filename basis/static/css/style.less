@@ -45,6 +45,8 @@ body {
     .systemLink(@COLOR_GRAY);
   }
 
+
+
   &__menu_list {
     .systemList(left, 0 0 0 30px, 0, 0);
     float: right;
@@ -58,11 +60,20 @@ body {
         font-size: @FONT_SIZE_TINY;
         text-transform: uppercase;
         .fontBook;
+        background: url(../img/active_menu_item_backgroud.png) -500% 100% no-repeat, url("../img/active_menu_item_top.png") 0% -100% no-repeat;
+        &:hover {
+          background: url(../img/active_menu_item_backgroud.png) 50% 100% no-repeat, url("../img/active_menu_item_top.png") 50% -100% no-repeat;
+          color: @COLOR_WHITE;
+        }
         &Current {
           position: relative;
           .systemLink(@COLOR_WHITE);
-          background: url(../img/active_menu_item_backgroud.png) center bottom no-repeat, url("../img/active_menu_item_top.png") center top no-repeat;
+          background: url(../img/active_menu_item_backgroud.png) 50% 100% no-repeat, url("../img/active_menu_item_top.png") 50% 0% no-repeat;
           .fontSemiBold;
+          &:hover {
+            background: url(../img/active_menu_item_backgroud.png) 50% 100% no-repeat, url("../img/active_menu_item_top.png") 50% 0% no-repeat;
+            color: @COLOR_WHITE;
+          }
         }
       }
     }

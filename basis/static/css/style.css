@@ -294,6 +294,7 @@ i body {
   font-size: 10px;
   text-transform: uppercase;
   font-family: pf_beausans_probbook;
+  background: url(../img/active_menu_item_backgroud.png) -500% 100% no-repeat, url("../img/active_menu_item_top.png") 0% -100% no-repeat;
 }
 .header__menu_list__item__link:active,
 .header__menu_list__item__link:hover,
@@ -305,11 +306,15 @@ i.header__menu_list__item__link,
 i .header__menu_list__item__link {
   font-family: pf_beausans_probbook_italic;
 }
+.header__menu_list__item__link:hover {
+  background: url(../img/active_menu_item_backgroud.png) 50% 100% no-repeat, url("../img/active_menu_item_top.png") 50% -100% no-repeat;
+  color: #ffffff;
+}
 .header__menu_list__item__linkCurrent {
   position: relative;
   color: #ffffff;
   text-decoration: none;
-  background: url(../img/active_menu_item_backgroud.png) center bottom no-repeat, url("../img/active_menu_item_top.png") center top no-repeat;
+  background: url(../img/active_menu_item_backgroud.png) 50% 100% no-repeat, url("../img/active_menu_item_top.png") 50% 0% no-repeat;
   font-family: pf_beausans_prosemibold;
 }
 .header__menu_list__item__linkCurrent:active,
@@ -321,6 +326,10 @@ i .header__menu_list__item__link {
 i.header__menu_list__item__linkCurrent,
 i .header__menu_list__item__linkCurrent {
   font-family: pf_beausans_proSBdIt;
+}
+.header__menu_list__item__linkCurrent:hover {
+  background: url(../img/active_menu_item_backgroud.png) 50% 100% no-repeat, url("../img/active_menu_item_top.png") 50% 0% no-repeat;
+  color: #ffffff;
 }
 .section {
   top: 0;
