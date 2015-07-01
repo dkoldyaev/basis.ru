@@ -192,3 +192,5 @@ EMAIL_FILE_PATH = os.path.join(MEDIA_ROOT, 'app-messages')
 
 if socket.gethostname() == 'debian-home':
     from basis.local_settings.debian_home__local_settings import *
+if socket.gethostname() == 'be17':
+    from basis.local_settings.be17__local_settings import *
