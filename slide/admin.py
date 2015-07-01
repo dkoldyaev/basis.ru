@@ -17,6 +17,7 @@ class SlideAdminInline(SortableTabularInline):
         ('Digits',  {'fields':  ['title_digit', 'title_width',]}),
         ('Title1',  {'fields':  ['title_line1_text', 'title_line1_deg', 'title_line1_top', 'title_line1_right', ]}),
         ('Title2',  {'fields':  ['title_line2_text', 'title_line2_deg', 'title_line2_top', 'title_line2_right', ]}),
+        ('Descr',   {'fields':  ['description', ]}),
     ]
     ordering = ['order']
     extra = 0

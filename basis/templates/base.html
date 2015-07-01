@@ -65,6 +65,25 @@
                         .on('click', '.popUpShadow', function(event){
                             event.preventDefault();
                             $('.popUpMessage, .popUpShadow, .popUpBlock').hide();
+                        }).on('click', '.slider__navigator__item__moreLink', function(event){
+                            var more_link = $(this);
+                            var more_block= $(this).next('.slider__navigator__item__more')
+                                    .find('.slider__navigator__item__moreBlock');
+                            var hide_link = more_block.next('.slider__navigator__item__moreHideLink');
+                            more_link.fadeOut();
+                            more_block.slideDown((function(more_link, hide_link){return function(){
+                                hide_link.fadeIn();
+                            };})(more_link, hide_link));
+                        }).on('click', '.slider__navigator__item__moreHideLink', function(event){
+                            var hide_link = $(this);
+                            var more_block= $(this).prev('.slider__navigator__item__moreBlock');
+                            var more_link = more_block.parent('.slider__navigator__item__more')
+                                    .prev('.slider__navigator__item__moreLink');
+                            hide_link.fadeOut((function(more_link, hide_link){return function(){
+                                more_link.fadeIn();
+                                more_block.slideUp();
+                            };})(more_link, hide_link));
+
                         });
 
 {#                $('form').submit(function(event){#}

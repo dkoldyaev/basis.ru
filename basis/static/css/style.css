@@ -685,7 +685,7 @@ i .section .apartment__description__navigator_linkGoBack {
 }
 .section .slider__navigator_container {
   display: block;
-  overflow: hidden;
+  overflow: visible;
   position: absolute;
   right: 0;
   top: 0;
@@ -699,6 +699,7 @@ i .section .apartment__description__navigator_linkGoBack {
   padding: 0;
   margin: 0;
   min-height: 130px;
+  overflow: visible;
   float: right;
 }
 .section .slider__navigator > li {
@@ -707,6 +708,9 @@ i .section .apartment__description__navigator_linkGoBack {
   float: none;
   margin: 0;
   padding: 0;
+}
+.section .slider__navigator > li {
+  overflow: visible;
 }
 .section .slider__navigator__item {
   text-align: center;
@@ -779,6 +783,80 @@ i .section .slider__navigator__itemDescriptionLine2 {
   clear: right;
   top: -40px;
 }
+.section .slider__navigator__item__more {
+  position: absolute;
+  top: 135px;
+  right: 0;
+}
+.section .slider__navigator__item__moreBlock {
+  display: block;
+  overflow: visible;
+  display: none;
+  background: #fffccf;
+  background: rgba(255, 255, 255, 0.63);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  width: 240px;
+  padding: 1em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #000000;
+  font-size: 12px;
+  text-align: left;
+}
+.section .slider__navigator__item__moreLink,
+.section .slider__navigator__item__moreHideLink {
+  display: inline-block;
+  line-height: 24px;
+  font-size: 13px;
+  position: absolute;
+  top: 120px;
+  color: #ffffff;
+  text-decoration: none;
+}
+.section .slider__navigator__item__moreLink:active,
+.section .slider__navigator__item__moreHideLink:active,
+.section .slider__navigator__item__moreLink:hover,
+.section .slider__navigator__item__moreHideLink:hover,
+.section .slider__navigator__item__moreLink:visited,
+.section .slider__navigator__item__moreHideLink:visited {
+  color: #ffffff;
+}
+.section .slider__navigator__item__moreLink {
+  background: none;
+  -webkit-background-size: 100%, 100%;
+  -moz-background-size: 100%, 100%;
+  -o-background-size: 100%, 100%;
+  background-size: 100%, 100%;
+  right: 0;
+  min-width: 83px;
+  color: #656565;
+  text-decoration: none;
+}
+.section .slider__navigator__item__moreLink:active,
+.section .slider__navigator__item__moreLink:hover,
+.section .slider__navigator__item__moreLink:visited {
+  color: #656565;
+}
+.section .slider__navigator__item__moreLink:hover {
+  background: url("../img/slider__navigator__item__moreLink.png") left top no-repeat;
+  color: #ffffff;
+}
+.section .slider__navigator__item__moreHideLink {
+  background: url("../img/slider__navigator__item__moreHideLink.png") left top no-repeat;
+  -webkit-background-size: 100%, 100%;
+  -moz-background-size: 100%, 100%;
+  -o-background-size: 100%, 100%;
+  background-size: 100%, 100%;
+  display: none;
+  right: 10px;
+  margin-top: 25px;
+  min-width: 66px;
+}
 .section .slider__navigator_arrow {
   display: block;
   overflow: hidden;
@@ -812,7 +890,7 @@ i .section .slider__navigator__itemDescriptionLine2 {
 .section .slider__navigatorWrapper {
   position: relative;
   display: block;
-  overflow: hidden;
+  overflow: visible;
   float: right;
 }
 .section .slider__slide_item {

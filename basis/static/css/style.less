@@ -322,7 +322,7 @@ body {
     }
 
     &__navigator_container {
-      .displayBlock();
+      .displayBlock(visible);
       position: absolute;
       right: 0;
       top: 0;
@@ -337,7 +337,12 @@ body {
 
       .systemList();
       min-height: @NAVIGATOR_HEIGHT;
+      overflow: visible;
       float: right;
+
+      > li {
+        overflow: visible;
+      }
 
       &__item {
         text-align: center;
@@ -388,6 +393,56 @@ body {
           }
         }
 
+        &__more {
+          position: absolute;
+          top: 135px;
+          right: 0;
+
+          &Block {
+            .displayBlock(visible);
+            display: none;
+            background: #fffccf;
+            background: rgba(255, 255, 255, 0.63);
+            .borderRadius(10px);
+            width: 240px;
+            padding: 1em;
+            .boxSizing();
+            color: @COLOR_BLACK;
+            font-size: @FONT_SIZE_SMALL;
+            text-align: left;
+          }
+
+          &Link, &HideLink {
+            display: inline-block;
+            line-height: 24px;
+            color: @COLOR_WHITE;
+            font-size: 13px;
+            position: absolute;
+            top: 120px;
+            .systemLink(@COLOR_WHITE);
+          }
+          &Link {
+            background: none;
+            .backgroundSize(100%, 100%);
+            right: 0;
+            min-width: 83px;
+            .systemLink(@COLOR_GRAY);
+            &:hover {
+              background: url("../img/slider__navigator__item__moreLink.png") left top no-repeat;
+              color: @COLOR_WHITE;
+            }
+          }
+          &HideLink {
+            background: url("../img/slider__navigator__item__moreHideLink.png") left top no-repeat;
+            .backgroundSize(100%, 100%);
+            display: none;
+            right: 10px;
+            margin-top: 25px;
+            min-width: 66px;
+          }
+
+        }
+
       }
 
       &_arrow {
@@ -411,7 +466,7 @@ body {
       }
       &Wrapper {
         position: relative;
-        .displayBlock();
+        .displayBlock(visible);
         float: right;
       }
     }

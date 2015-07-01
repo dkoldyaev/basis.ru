@@ -29,11 +29,6 @@
                                 {{ slide.title_line1_text }}
                             {% endautoescape %}
                         </div>
-{#                        <div class="slider__navigator__itemDescriptionLine1 slider__navigator__itemDescriptionLine1Fake">#}
-{#                            {% autoescape off %}#}
-{#                                {{ slide.title_line1_text }}#}
-{#                            {% endautoescape %}#}
-{#                        </div>#}
 
                         <div class="slider__navigator__itemDescriptionLine2"
                              style="{% spaceless %}
@@ -47,11 +42,19 @@
                                 {{ slide.title_line2_text }}
                             {% endautoescape %}
                         </div>
-{#                        <div class="slider__navigator__itemDescriptionLine2 slider__navigator__itemDescriptionLine2Fake">#}
-{#                            {% autoescape off %}#}
-{#                                {{ slide.title_line2_text }}#}
-{#                            {% endautoescape %}#}
-{#                        </div>#}
+
+                        {% if slide.description %}
+                            <a href="#" class="slider__navigator__item__moreLink">подробнее</a>
+                            <div class="slider__navigator__item__more">
+                                <div class="slider__navigator__item__moreBlock">
+                                    {% autoescape off %}
+                                        {{ slide.description }}
+                                    {% endautoescape %}
+                                </div>
+                                <a href="#" class="slider__navigator__item__moreHideLink">скрыть</a>
+                            </div>
+                        {% endif %}
+
                     </div>
                 </li>
             {% endfor %}
