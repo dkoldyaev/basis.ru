@@ -41,8 +41,8 @@ body {
     width: 70px;
     height: auto;
     padding-top: 75px;
-    text-align: right;
-    background: url("../img/header_logo.png") right top no-repeat;
+    text-align: left;
+    background: url("../img/header_logo.png") left top no-repeat;
     font-size: @FONT_SIZE_SMALL;
     .systemLink(@COLOR_GRAY);
   }
@@ -119,6 +119,7 @@ body {
       .displayBlock();
       float: left;
       width: @DESCRIPTION_COL_WIDTH;
+      padding-top: 30px;
 
       p {
         .fontThin;
@@ -143,6 +144,7 @@ body {
       .displayBlock();
       width: (100%-@DESCRIPTION_COL_WIDTH);
       padding-left: @DESCRIPTION_COL_PADDING;
+      padding-top: 30px;
       float: left;
       .boxSizing();
 
