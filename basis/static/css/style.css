@@ -1294,7 +1294,8 @@ i .header__menu_list__item__link {
 .header__menu_list__item__link:not(:hover) {
   transition: 300ms;
 }
-.header__menu_list__item__linkCurrent {
+.header__menu_list__item__linkCurrent,
+.header__menu_list__item__linkParent {
   position: relative;
   color: #ffffff;
   text-decoration: none;
@@ -1302,16 +1303,23 @@ i .header__menu_list__item__link {
   font-family: pf_beausans_prosemibold;
 }
 .header__menu_list__item__linkCurrent:active,
+.header__menu_list__item__linkParent:active,
 .header__menu_list__item__linkCurrent:hover,
-.header__menu_list__item__linkCurrent:visited {
+.header__menu_list__item__linkParent:hover,
+.header__menu_list__item__linkCurrent:visited,
+.header__menu_list__item__linkParent:visited {
   color: #ffffff;
 }
 .header__menu_list__item__linkCurrent i,
+.header__menu_list__item__linkParent i,
 i.header__menu_list__item__linkCurrent,
-i .header__menu_list__item__linkCurrent {
+i.header__menu_list__item__linkParent,
+i .header__menu_list__item__linkCurrent,
+i .header__menu_list__item__linkParent {
   font-family: pf_beausans_proSBdIt;
 }
-.header__menu_list__item__linkCurrent:hover {
+.header__menu_list__item__linkCurrent:hover,
+.header__menu_list__item__linkParent:hover {
   background: url(../img/active_menu_item_backgroud.png) 50% 100% no-repeat, url("../img/active_menu_item_top.png") 50% 0% no-repeat;
   color: #ffffff;
 }

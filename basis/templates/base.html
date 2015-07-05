@@ -123,7 +123,7 @@
                 {% for header_menu_item in header_menu_items %}
                     <li class="header__menu_list__item">{% spaceless %}
                         <a href="{{ header_menu_item.path }}"
-                           class="header__menu_list__item__link {% if header_menu_item == current_header_menu_item %}header__menu_list__item__linkCurrent{% endif %}">
+                           class="header__menu_list__item__link {% if header_menu_item == current_header_menu_item %}header__menu_list__item__linkCurrent{% endif %} {% if header_menu_item in parent_header_menu_items %}header__menu_list__item__linkParent{% endif %}">
                             {{ header_menu_item.text }}
                         </a>
                     {% endspaceless %}</li>
