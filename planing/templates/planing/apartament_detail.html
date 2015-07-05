@@ -12,6 +12,7 @@
                 <a href="{% url 'building_detail' building_id=building.id %}"
                    class="apartment__building_list__building_imageLink">{% spaceless %}
                     <img src="{{ building.plan.url }}" height="120"
+                         style="{% if building == apartment.building %}background-image:url({{ apartment.plan_fill.url }});{% endif %}"
                          class="apartment__building_list__building_image" />
                 {% endspaceless %}</a>
 
