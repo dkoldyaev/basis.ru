@@ -1229,6 +1229,7 @@ i body {
 .header {
   top: 0;
   height: 120px;
+  z-index: 2;
 }
 .header__logo {
   display: block;
@@ -1316,6 +1317,11 @@ i .header__menu_list__item__linkCurrent {
 }
 .section {
   top: 0;
+  padding-top: 135px;
+  padding-bottom: 160px;
+  min-height: 100%;
+  margin-top: -135px;
+  margin-bottom: -130px;
 }
 .section .building__description {
   display: block;
@@ -1665,6 +1671,8 @@ i .section .apartment__description__navigator_linkGoBack {
   display: block;
   overflow: hidden;
   width: 100%;
+  margin-top: -8%;
+  margin-bottom: -10%;
 }
 .section .sliderWrapper .wrap_image {
   opacity: 0;
@@ -1680,7 +1688,7 @@ i .section .apartment__description__navigator_linkGoBack {
   overflow: visible;
   position: absolute;
   right: 0;
-  top: 0;
+  top: 105px;
   padding: 0 40px;
   z-index: 1;
   width: 100%;
@@ -2016,7 +2024,7 @@ i .section .news__list__item_announce_readMoreLink {
   display: none;
 }
 .footer {
-  height: 140px;
+  height: 120px;
   top: 0;
   overflow: visible;
 }
