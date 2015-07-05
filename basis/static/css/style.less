@@ -57,28 +57,39 @@ body {
         .displayBlock;
         text-align: center;
         .systemLink(@COLOR_GRAY);
-        min-width: 97px;
+        min-width: 107px;
         padding: 25px 15px 5px;
-        font-size: @FONT_SIZE_TINY;
+        font-size: @FONT_SIZE_SMALL;
         text-transform: uppercase;
         .fontBook;
-        background: url(../img/active_menu_item_backgroud.png) -500% 100% no-repeat, url("../img/active_menu_item_top.png") 0% -100% no-repeat;
-        &:hover {
-          background: url(../img/active_menu_item_backgroud.png) 50% 100% no-repeat, url("../img/active_menu_item_top.png") 50% -100% no-repeat;
+        .backgroundSize(0, 25px);
+        position: relative;
+        line-height: 16px;
+        &:before {
+          .displayBlock();
+          content: ' ';
+          width: 100%;
+          height: 30px;
+          background-image: url(../img/active_menu_item_backgroud.png);
+          background-repeat: no-repeat;
+          background-position: left bottom;
+          .backgroundSize(100%, 25px);
+          position: absolute;
+          left: -100%;
+          bottom: 0;
+          z-index: -1;
+        }
+        &:hover, &Current, &Parent {
+          .systemLink(@COLOR_WHITE);
+          &:before {
+            left: 0;
+            transition: 300ms;
+          }
           color: @COLOR_WHITE;
-          transition: 300ms;
         }
         &:not(:hover) {
-          transition: 300ms;
-        }
-        &Current, &Parent {
-          position: relative;
-          .systemLink(@COLOR_WHITE);
-          background: url(../img/active_menu_item_backgroud.png) 50% 100% no-repeat, url("../img/active_menu_item_top.png") 50% 0% no-repeat;
-          .fontSemiBold;
-          &:hover {
-            background: url(../img/active_menu_item_backgroud.png) 50% 100% no-repeat, url("../img/active_menu_item_top.png") 50% 0% no-repeat;
-            color: @COLOR_WHITE;
+          &:before {
+            transition: 300ms;
           }
         }
       }
@@ -363,6 +374,7 @@ body {
       min-height: @NAVIGATOR_HEIGHT;
       overflow: visible;
       float: right;
+      cursor: default;
 
       > li {
         overflow: visible;
