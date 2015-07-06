@@ -1693,7 +1693,7 @@ i .section .apartment__description__navigator_linkGoBack {
   display: block;
   overflow: hidden;
   width: 100%;
-  margin-top: -8%;
+  margin-top: -70px;
   margin-bottom: -10%;
 }
 .section .sliderWrapper .wrap_image {
