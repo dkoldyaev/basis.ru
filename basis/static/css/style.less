@@ -650,6 +650,28 @@ body {
 
   }
 
+  .error_message {
+    position: absolute;
+    width: 100%;
+    top: 35%;
+    text-align: center;
+
+    &__code {
+      .displayBlock();
+      font-size: 135px;
+      color: @COLOR_GREEN;
+      .fontBlack;
+      letter-spacing: -20px;
+    }
+
+    &__message {
+      color: @COLOR_GRAY;
+      font-size: 23px;
+      transform: rotate(-3deg);
+    }
+
+  }
+
 }
 
 .footer {

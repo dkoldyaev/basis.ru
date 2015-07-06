@@ -2244,6 +2244,30 @@ i .section .contact__map_hideButton {
   margin: 0;
   padding: 0;
 }
+.section .error_message {
+  position: absolute;
+  width: 100%;
+  top: 35%;
+  text-align: center;
+}
+.section .error_message__code {
+  display: block;
+  overflow: hidden;
+  font-size: 135px;
+  color: #bdcb21;
+  font-family: pf_beausans_problack;
+  letter-spacing: -20px;
+}
+.section .error_message__code i,
+i.section .error_message__code,
+i .section .error_message__code {
+  font-family: pf_beausans_problack_italic;
+}
+.section .error_message__message {
+  color: #656565;
+  font-size: 23px;
+  transform: rotate(-3deg);
+}
 .footer {
   height: 120px;
   top: 0;
