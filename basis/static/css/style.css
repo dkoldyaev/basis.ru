@@ -2342,3 +2342,7 @@ i [class|=wheelnav-piemenu-title] > tspan {
   margin-top: 20%;
   margin-left: -2%;
 }
+#piemenu text,
+#piemenu tspan {
+  cursor: default;
+}
