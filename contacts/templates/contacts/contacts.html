@@ -28,7 +28,7 @@
 
             function initializeMap() {
 
-                var map_center = new google.maps.LatLng(56.5068332, 60.8434739);
+                var map_center = new google.maps.LatLng({{ contact.coord }});
 
                 var mapOptions = {
                   center:   map_center,
@@ -46,10 +46,7 @@
                 });
 
                 var infowindow = new google.maps.InfoWindow({
-                    content: '  <div class="contact__map_address_popup">' +
-                    '               г. Сысерть, ул.Строителей., д. 8 стр. 1<br/>' +
-                    '               МФК «Город Базис»' +
-                    '           </div>',
+                    content: '  <div class="contact__map_address_popup">{{ contact.coord_popup }}</div>',
                     maxWidth:   303,
                 });
 
@@ -94,12 +91,12 @@
             {{ contact.text }}
         {% endautoescape %}
 
-        {% if contact.map_code %}
+        {% if contact.coord %}
             <a href="#" class="contact__map_showButton">посмотреть на карте</a>
         {% endif %}
 
     </div>
-    {% if contact.map_code %}
+    {% if contact.coord %}
         <div class="contact__map_container">
             <div class="contact__map_iframe" id="contact__map_iframe"></div>
 {#            {% autoescape off %}{{ contact.map_code }}{% endautoescape %}#}
