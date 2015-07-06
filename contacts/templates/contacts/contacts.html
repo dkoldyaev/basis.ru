@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block style %}
+    {{ block.super }}
+    <style rel="stylesheet">
+        .section {
+            background: url("{{ contact.image.url }}") 10% 50% no-repeat;
+            background-size: 70%;
+        }
+    </style>
+{% endblock %}
+
+
+{% block script %}
+
+    {{ block.super }}
+
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkWpiD4GPG0lqva0du74xG41jAvKa4fSc">
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            function initializeMap() {
+
+                var map_center = new google.maps.LatLng(56.5068332, 60.8434739);
+
+                var mapOptions = {
+                  center:   map_center,
+                  zoom:     18
+                };
+
+                var map = new google.maps.Map(document.getElementById('contact__map_iframe'),
+                    mapOptions);
+
+                var marker = new google.maps.Marker({
+                    position:   map_center,
+                    map:        map,
+                    title:      'Hello World!',
+                    icon:       '{% static 'img/map_pin.png' %}',
+                });
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: '  <div class="contact__map_address_popup">' +
+                    '               г. Сысерть, ул.Строителей., д. 8 стр. 1<br/>' +
+                    '               МФК «Город Базис»' +
+                    '           </div>',
+                    maxWidth:   303,
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map, marker);
+                });
+
+                map_is_initialized = true;
+
+            }
+
+            $('.contact__map_showButton').click(function(event){
+
+                event.preventDefault();
+
+                $('.contact__map_container').css({opacity:0, display:'block'});
+                if (typeof map_is_initialized == 'undefined' || !map_is_initialized) {
+                    initializeMap();}
+                $('.contact__map_container').animate({opacity:1});
+
+            });
+
+            $('.contact__map_hideButton').click(function(event){
+
+                event.preventDefault();
+                $('.contact__map_container').fadeOut();
+
+            });
+
+        });
+
+    </script>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="contact__text" style="min-width: {{ contact.image.width }}px; min-height: {{ contact.image.height }}px;">
+
+        {% autoescape off %}
+            {{ contact.text }}
+        {% endautoescape %}
+
+        {% if contact.map_code %}
+            <a href="#" class="contact__map_showButton">посмотреть на карте</a>
+        {% endif %}
+
+    </div>
+    {% if contact.map_code %}
+        <div class="contact__map_container">
+            <div class="contact__map_iframe" id="contact__map_iframe"></div>
+{#            {% autoescape off %}{{ contact.map_code }}{% endautoescape %}#}
+            <a href="#" class="contact__map_hideButton">вернуться</a>
+        </div>
+    {% endif %}
+
+{% endblock %}

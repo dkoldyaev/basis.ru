@@ -2047,6 +2047,164 @@ i .section .news__list__item_announce_readMoreLink {
 .section .news__list__nextPage {
   display: none;
 }
+.section .contact__text {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  text-align: right;
+  padding-top: 30px;
+  font-size: 20px;
+}
+.section .contact__map_showButton {
+  font-family: pf_beausans_probold;
+  font-size: 16px;
+  color: #ffffff;
+  text-align: center;
+  width: auto;
+  height: 34px;
+  line-height: 34px;
+  background: url("../img/linkLikeMarker.png") left -34px repeat-x;
+  position: relative;
+  overflow: visible;
+  margin: 0 12px;
+  display: inline-block;
+  color: #4a5e00;
+  text-decoration: none;
+  background: url(../img/linkLikeYellowMarker.png) left -68px repeat-x;
+}
+.section .contact__map_showButton:active,
+.section .contact__map_showButton:hover,
+.section .contact__map_showButton:visited {
+  color: #ffffff;
+}
+.section .contact__map_showButton i,
+i.section .contact__map_showButton,
+i .section .contact__map_showButton {
+  font-family: pf_beausans_probold_italic;
+}
+.section .contact__map_showButton:before,
+.section .contact__map_showButton:after {
+  content: ' ';
+  display: inline-block;
+  width: 12px;
+  height: 28px;
+  top: 0;
+  position: absolute;
+}
+.section .contact__map_showButton:before {
+  left: -12px;
+  background: url("../img/linkLikeMarker.png") left top no-repeat;
+}
+.section .contact__map_showButton:after {
+  right: -12px;
+  background: url("../img/linkLikeMarker.png") left -68px repeat-x;
+}
+.section .contact__map_showButton:active,
+.section .contact__map_showButton:hover,
+.section .contact__map_showButton:visited {
+  color: #4a5e00;
+}
+.section .contact__map_showButton:before {
+  background: url(../img/linkLikeYellowMarker.png) left top no-repeat;
+  height: 34px;
+}
+.section .contact__map_showButton:after {
+  background: url(../img/linkLikeYellowMarker.png) left -34px no-repeat;
+  height: 34px;
+}
+.section .contact__map_hideButton {
+  font-family: pf_beausans_probold;
+  font-size: 16px;
+  color: #ffffff;
+  text-align: center;
+  width: auto;
+  height: 34px;
+  line-height: 34px;
+  background: url("../img/linkLikeMarker.png") left -34px repeat-x;
+  position: relative;
+  overflow: visible;
+  margin: 0 12px;
+  display: inline-block;
+  color: #4a5e00;
+  text-decoration: none;
+  background: url(../img/linkLikeYellowMarker.png) left -68px repeat-x;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.section .contact__map_hideButton:active,
+.section .contact__map_hideButton:hover,
+.section .contact__map_hideButton:visited {
+  color: #ffffff;
+}
+.section .contact__map_hideButton i,
+i.section .contact__map_hideButton,
+i .section .contact__map_hideButton {
+  font-family: pf_beausans_probold_italic;
+}
+.section .contact__map_hideButton:before,
+.section .contact__map_hideButton:after {
+  content: ' ';
+  display: inline-block;
+  width: 12px;
+  height: 28px;
+  top: 0;
+  position: absolute;
+}
+.section .contact__map_hideButton:before {
+  left: -12px;
+  background: url("../img/linkLikeMarker.png") left top no-repeat;
+}
+.section .contact__map_hideButton:after {
+  right: -12px;
+  background: url("../img/linkLikeMarker.png") left -68px repeat-x;
+}
+.section .contact__map_hideButton:active,
+.section .contact__map_hideButton:hover,
+.section .contact__map_hideButton:visited {
+  color: #4a5e00;
+}
+.section .contact__map_hideButton:before {
+  background: url(../img/linkLikeYellowMarker.png) left top no-repeat;
+  height: 34px;
+}
+.section .contact__map_hideButton:after {
+  background: url(../img/linkLikeYellowMarker.png) left -34px no-repeat;
+  height: 34px;
+}
+.section .contact__map_container {
+  position: absolute;
+  top: 165px;
+  bottom: 160px;
+  left: 35px;
+  right: 90px;
+  width: auto;
+  display: none;
+}
+.section .contact__map_container:before {
+  content: ' ';
+  width: 48px;
+  height: 85px;
+  background: url("../img/bird.png") left top no-repeat;
+  position: absolute;
+  left: 200px;
+  top: -80px;
+  z-index: 100500;
+}
+.section .contact__map_iframe {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 50px;
+}
+.section .contact__map_address_popup {
+  display: block;
+  overflow: hidden;
+  font-size: 16px;
+  width: 303px;
+  height: 53px;
+  background: url("../img/contact__map_address_popup.png") left top no-repeat;
+}
 .footer {
   height: 120px;
   top: 0;

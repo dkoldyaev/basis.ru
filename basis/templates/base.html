@@ -84,33 +84,6 @@
                             };})(more_link, hide_link));
 
                         });
-
-{#                $('form').submit(function(event){#}
-{##}
-{#                    event.preventDefault();#}
-{##}
-{#                    $.ajax({#}
-{#                        url:    $(this).attr('action'),#}
-{#                        type:   $(this).attr('method'),#}
-{#                        data:   $(this).serialize(),#}
-{#                        success:(function(form){return function(data) {#}
-{#                            form.find('.error_list').remove();#}
-{#                            if (data['success']) {#}
-{#                                alert('ok');#}
-{#                            } else {#}
-{#                                for (key in data['errors']) {#}
-{#                                    var input = form.find('*[name='+key+']');#}
-{#                                    var ul = $('<ul style="color:red" class="error_list"></ul>');#}
-{#                                    for (er_num in data['errors'][key]) {#}
-{#                                        ul.append($('<li>'+data['errors'][key][er_num]+'</li>'));#}
-{#                                    }#}
-{#                                    ul.insertBefore(input);#}
-{#                                }#}
-{#                            }#}
-{#                        };})($(this))#}
-{#                    });#}
-{##}
-{#                });#}
             });
         </script>
     {% endblock %}

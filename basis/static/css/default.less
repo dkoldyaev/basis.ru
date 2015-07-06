@@ -168,9 +168,7 @@
 
 
 
-.linkLikeMarker(@font_size: @FONT_SIZE_DEFAULT){
-
-  @BACKGROUND_HEIGHT: 28px;
+.linkLikeMarker(@font_size: @FONT_SIZE_DEFAULT, @BACKGROUND_HEIGHT: 28px){
 
   .systemLink(@COLOR_WHITE);
 
@@ -207,6 +205,21 @@
     background: url("../img/linkLikeMarker.png") left (-@BACKGROUND_HEIGHT*2) repeat-x;
   }
 
+}
+
+.linkLikeYellowMarker(@font_size: @FONT_SIZE_DEFAULT) {
+  @BACKGROUND_HEIGHT: 34px;
+  .linkLikeMarker(@font_size: @font_size, @BACKGROUND_HEIGHT: @BACKGROUND_HEIGHT);
+  .systemLink(@COLOR_DARK_GREEN);
+  background: url(../img/linkLikeYellowMarker.png) left (-@BACKGROUND_HEIGHT*2) repeat-x;
+  &:before {
+    background: url(../img/linkLikeYellowMarker.png) left top no-repeat;
+    height: @BACKGROUND_HEIGHT;
+  }
+  &:after {
+    background: url(../img/linkLikeYellowMarker.png) left (-@BACKGROUND_HEIGHT) no-repeat;
+    height: @BACKGROUND_HEIGHT;
+  }
 }
 
 

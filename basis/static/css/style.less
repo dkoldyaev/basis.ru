@@ -587,6 +587,63 @@ body {
 
   }
 
+  .contact {
+
+    &__text {
+      .displayBlock();
+      width: 100%;
+      text-align: right;
+      padding-top: 30px;
+      font-size: @FONT_SIZE_MEDIUM;
+    }
+
+    &__map {
+      &_showButton {
+        .linkLikeYellowMarker();
+      }
+      &_hideButton {
+        .linkLikeYellowMarker();
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+      &_container {
+        position: absolute;
+        top: 165px;
+        bottom: 160px;
+        left: 35px;
+        right: 90px;
+        width: auto;
+        display: none;
+        &:before {
+          content: ' ';
+          width: 48px;
+          height: 85px;
+          background: url("../img/bird.png") left top no-repeat;
+          position: absolute;
+          left: 200px;
+          top: -80px;
+          z-index: 100500;
+        }
+      }
+      &_iframe {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 50px;
+      }
+      &_address_popup {
+        .displayBlock();
+        overflow: hidden;
+        font-size: @FONT_SIZE_DEFAULT;
+        width: 303px;
+        height: 53px;
+        background: url("../img/contact__map_address_popup.png") left top no-repeat;
+      }
+    }
+
+  }
+
 }
 
 .footer {

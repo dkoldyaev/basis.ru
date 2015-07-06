@@ -14,3 +14,5 @@ class Contact(BaseModel):
     image =     models.ImageField(blank=True, null=True, verbose_name=u'Фоновое изображение')
     text =      RichTextField(blank=True, null=True, verbose_name=u'Текст')
     map_code =  models.TextField(blank=True, null=True, verbose_name=u'Код для встраивания карты')
+
+    objects =   ContactQuerySet.as_manager()
