@@ -30,7 +30,7 @@ class MenuItemAdmin(SortableModelAdmin):
     list_display = ['id', 'text', 'path', 'order']
     list_display_links = ['id', 'text', 'path', ]
     suit_form_tabs = [(type[0], type[1]) for type in MENU_TYPES]
-    readonly_fields = ['_created', '_updated', 'path', 'planing_no_settings', 'news_list_no_settings']
+    readonly_fields = ['_created', '_updated', 'path', 'planing_no_settings', 'news_list_no_settings', 'contacts_no_settings']
     ordering = ['order']
 
     change_form_template = 'menu/admin/menu_change_form.html'
@@ -40,6 +40,10 @@ class MenuItemAdmin(SortableModelAdmin):
     planing_no_settings.short_description = ''
 
     def news_list_no_settings(self, obj):
+        return mark_safe(u'Нечего настраивать')
+    news_list_no_settings.short_description = ''
+
+    def contacts_no_settings(self, obj):
         return mark_safe(u'Нечего настраивать')
     news_list_no_settings.short_description = ''
 

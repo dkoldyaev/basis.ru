@@ -11,7 +11,8 @@ from basis.models import BaseModel
 MENU_TYPES = [
     ('slide_page',          u'Группа слайдов',          ['slide_page_slide_page',]),
     ('news_list',           u'Список новостей',         []),
-    ('planing_build',       u'Планировка дома',         ['planing_build_buildind'])
+    ('planing_build',       u'Планировка дома',         ['planing_build_buildind']),
+    ('contacts',            u'Контакты',                []),
 ]
 MENU_TARGETS = [
     ('_self',   u'Как обычно'),
@@ -51,6 +52,9 @@ class MenuItem(BaseModel):
 
             if self.type == 'planing_build' :
                 return reverse('building_detail', kwargs={'building_id':self.planing_build_buildind.id})
+
+            if self.type == 'contacts' :
+                return reverse('contacts')
 
         except :
 

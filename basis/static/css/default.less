@@ -71,6 +71,7 @@
 .systemLink(@color: @COLOR_GREEN){
   color: @color;
   text-decoration: none;
+  border: none;
   &:active, &:hover, &:visited {
     color: @color;
   }
@@ -264,4 +265,19 @@ h2 {
 
 p {
   margin-bottom: 1em;
+}
+
+a {
+  font-size: inherit;
+  font-family: inherit;
+  color: @COLOR_DARK_GREEN;
+  text-decoration: none;
+  display: inline-block;
+  border-bottom: 1px solid @COLOR_DARK_GREEN;
+  &:hover, &:active {
+    text-decoration: none;
+  }
+  &:active {
+    text-decoration: none;
+  }
 }

@@ -12,7 +12,7 @@ class Contact(BaseModel):
     slug =      models.SlugField(blank=True, null=False, verbose_name=u'URL')
 
     image =     models.ImageField(blank=True, null=True, verbose_name=u'Фоновое изображение')
-    text =      RichTextField(blank=True, null=True, verbose_name=u'Текст')
+    text =      RichTextField(blank=True, null=True, verbose_name=u'Текст', config_name='medium')
     coord =     models.CharField(blank=False, null=False, max_length=255, verbose_name=u'Координаты маркера')
     coord_popup=RichTextField(blank=False, null=False, verbose_name=u'Текст на всплывающей подсказке маркера')
 

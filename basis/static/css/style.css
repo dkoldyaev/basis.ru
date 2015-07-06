@@ -164,6 +164,7 @@ i .h1 {
 .h1 a {
   color: #bdcb21;
   text-decoration: none;
+  border: none;
 }
 .h1 a:active,
 .h1 a:hover,
@@ -184,6 +185,7 @@ i h1 {
 h1 a {
   color: #bdcb21;
   text-decoration: none;
+  border: none;
 }
 h1 a:active,
 h1 a:hover,
@@ -202,6 +204,7 @@ i h2 {
 h2 a {
   color: #ffffff;
   text-decoration: none;
+  border: none;
 }
 h2 a:active,
 h2 a:hover,
@@ -210,6 +213,21 @@ h2 a:visited {
 }
 p {
   margin-bottom: 1em;
+}
+a {
+  font-size: inherit;
+  font-family: inherit;
+  color: #4a5e00;
+  text-decoration: none;
+  display: inline-block;
+  border-bottom: 1px solid #4a5e00;
+}
+a:hover,
+a:active {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
 }
 .input {
   position: relative;
@@ -1243,6 +1261,7 @@ i body {
   font-size: 12px;
   color: #656565;
   text-decoration: none;
+  border: none;
 }
 .header__logo:active,
 .header__logo:hover,
@@ -1269,6 +1288,7 @@ i body {
   text-align: center;
   color: #656565;
   text-decoration: none;
+  border: none;
   min-width: 107px;
   padding: 25px 15px 5px;
   font-size: 12px;
@@ -1313,6 +1333,7 @@ i .header__menu_list__item__link {
 .header__menu_list__item__linkCurrent,
 .header__menu_list__item__linkParent {
   text-decoration: none;
+  border: none;
   color: #ffffff;
 }
 .header__menu_list__item__link:hover:active,
@@ -1372,6 +1393,7 @@ i .section .building__description b {
 }
 .section .building__apartment_link {
   text-decoration: none;
+  border: none;
   font-family: pf_beausans_probold;
   font-size: 16px;
   color: #ffffff;
@@ -1472,6 +1494,7 @@ i .section .building__otherBuildings__building_title h2 {
 .section .building__otherBuildings__building_title h2 a {
   color: #bdcb21;
   text-decoration: none;
+  border: none;
 }
 .section .building__otherBuildings__building_title h2 a:active,
 .section .building__otherBuildings__building_title h2 a:hover,
@@ -1481,6 +1504,7 @@ i .section .building__otherBuildings__building_title h2 {
 .section .building__otherBuildings__building_title_link {
   color: #000000;
   text-decoration: none;
+  border: none;
 }
 .section .building__otherBuildings__building_title_link:active,
 .section .building__otherBuildings__building_title_link:hover,
@@ -1547,6 +1571,7 @@ i .section .apartment__building_list__building_name {
 .section .apartment__building_list__building_name a {
   color: #bdcb21;
   text-decoration: none;
+  border: none;
 }
 .section .apartment__building_list__building_name a:active,
 .section .apartment__building_list__building_name a:hover,
@@ -1556,6 +1581,7 @@ i .section .apartment__building_list__building_name {
 .section .apartment__building_list__building_link {
   color: #000000;
   text-decoration: none;
+  border: none;
 }
 .section .apartment__building_list__building_link:active,
 .section .apartment__building_list__building_link:hover,
@@ -1656,6 +1682,7 @@ i .section .apartment__description__price_unit {
 .section .apartment__description__navigator_linkFeedback {
   color: #4a5e00;
   text-decoration: none;
+  border: none;
   font-family: pf_beausans_probold;
 }
 .section .apartment__description__navigator_linkFeedback:active,
@@ -1671,6 +1698,7 @@ i .section .apartment__description__navigator_linkFeedback {
 .section .apartment__description__navigator_linkGoBack {
   color: #000000;
   text-decoration: none;
+  border: none;
   font-family: pf_beausans_proregular;
 }
 .section .apartment__description__navigator_linkGoBack:active,
@@ -1841,6 +1869,7 @@ i .section .slider__navigator__itemDescriptionLine2 {
   top: 120px;
   color: #ffffff;
   text-decoration: none;
+  border: none;
 }
 .section .slider__navigator__item__moreLink:active,
 .section .slider__navigator__item__moreHideLink:active,
@@ -1860,6 +1889,7 @@ i .section .slider__navigator__itemDescriptionLine2 {
   min-width: 83px;
   color: #656565;
   text-decoration: none;
+  border: none;
 }
 .section .slider__navigator__item__moreLink:active,
 .section .slider__navigator__item__moreLink:hover,
@@ -1886,6 +1916,7 @@ i .section .slider__navigator__itemDescriptionLine2 {
   overflow: hidden;
   color: #bdcb21;
   text-decoration: none;
+  border: none;
   position: relative;
   top: 0;
   bottom: 0;
@@ -1963,6 +1994,7 @@ i .section .slider__navigator__itemDescriptionLine2 {
   font-family: pf_beausans_probold;
   color: #4a5e00;
   text-decoration: none;
+  border: none;
   font-size: 26px;
   margin-bottom: 0.5em;
 }
@@ -2002,6 +2034,7 @@ i .section .news__list__item_announce {
   display: block;
   overflow: hidden;
   text-decoration: none;
+  border: none;
   font-family: pf_beausans_probold;
   font-size: 16px;
   color: #ffffff;
@@ -2070,6 +2103,7 @@ i .section .news__list__item_announce_readMoreLink {
   display: inline-block;
   color: #4a5e00;
   text-decoration: none;
+  border: none;
   background: url(../img/linkLikeYellowMarker.png) left -68px repeat-x;
 }
 .section .contact__map_showButton:active,
@@ -2127,6 +2161,7 @@ i .section .contact__map_showButton {
   display: inline-block;
   color: #4a5e00;
   text-decoration: none;
+  border: none;
   background: url(../img/linkLikeYellowMarker.png) left -68px repeat-x;
   position: absolute;
   right: 0;
@@ -2205,6 +2240,10 @@ i .section .contact__map_hideButton {
   height: 53px;
   background: url("../img/contact__map_address_popup.png") left top no-repeat;
 }
+.section .contact__map_address_popup p {
+  margin: 0;
+  padding: 0;
+}
 .footer {
   height: 120px;
   top: 0;
@@ -2224,6 +2263,7 @@ i .section .contact__map_hideButton {
   overflow: hidden;
   color: #bdcb21;
   text-decoration: none;
+  border: none;
   width: 42px;
   height: 30px;
   background-position: 0 -30px;
@@ -2344,6 +2384,7 @@ i .footer__author {
 .footer__author {
   color: #656565;
   text-decoration: none;
+  border: none;
   text-align: right;
   padding-right: 35px;
   padding-top: 3px;
@@ -2403,6 +2444,7 @@ i .popUpMessage {
   overflow: hidden;
   color: #bdcb21;
   text-decoration: none;
+  border: none;
   width: 46px;
   height: 39px;
   background: url("../img/popUpMessage_close.png") left top no-repeat;

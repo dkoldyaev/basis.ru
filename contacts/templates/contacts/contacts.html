@@ -46,7 +46,7 @@
                 });
 
                 var infowindow = new google.maps.InfoWindow({
-                    content: '  <div class="contact__map_address_popup">{{ contact.coord_popup }}</div>',
+                    content: '  <div class="contact__map_address_popup">{% autoescape off %}{% spaceless %}{{ contact.coord_popup|linebreaks }}{% endspaceless %}{% endautoescape %}</div>',
                     maxWidth:   303,
                 });
 
