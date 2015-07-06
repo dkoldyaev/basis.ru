@@ -30,6 +30,7 @@ class MenuItem(BaseModel):
 
     slide_page_slide_page =     models.ForeignKey('slide.SlidePage', blank=True, null=True)
     planing_build_buildind =    models.ForeignKey('planing.Building', blank=True, null=True)
+    contacts_contact =          models.ForeignKey('contacts.Contact', blank=True, null=True)
 
     meta_title =        models.CharField(blank=True, null=True, max_length=255, verbose_name=u'Title', help_text=u'Заголовок окна на странице')
     meta_description =  models.TextField(blank=True, null=True, verbose_name=u'META-Описание', help_text=u'Описание страницы новости для поисковиков')

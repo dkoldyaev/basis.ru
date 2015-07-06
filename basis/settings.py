@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'planing',
     'slide',
     'feedback',
+    'contacts',
 )
 
 MIDDLEWARE_CLASSES = (
