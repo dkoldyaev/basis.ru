@@ -13,6 +13,7 @@ class Contact(BaseModel):
 
     image =     models.ImageField(blank=True, null=True, verbose_name=u'Фоновое изображение')
     text =      RichTextField(blank=True, null=True, verbose_name=u'Текст')
-    map_code =  models.TextField(blank=True, null=True, verbose_name=u'Код для встраивания карты')
+    coord =     models.CharField(blank=False, null=False, max_length=255, verbose_name=u'Координаты маркера')
+    coord_popup=RichTextField(blank=False, null=False, verbose_name=u'Текст на всплывающей подсказке маркера')
 
     objects =   ContactQuerySet.as_manager()
