@@ -1936,10 +1936,11 @@ i .section .slider__navigator__itemDescriptionLine2 {
   position: relative;
   top: 0;
   bottom: 0;
-  width: 47px;
-  background: url("../img/slider_navigator_arrow.png") center center no-repeat;
+  width: 57px;
+  background-image: url("../img/slider_navigator_arrow.png");
+  background-repeat: no-repeat;
   text-indent: -9000px;
-  min-height: 130px;
+  min-height: 114px;
   float: right;
 }
 .section .slider__navigator_arrow:active,
@@ -1949,14 +1950,17 @@ i .section .slider__navigator__itemDescriptionLine2 {
 }
 .section .slider__navigator_arrowLeft {
   left: 0;
+  background-position: left top;
+}
+.section .slider__navigator_arrowLeft:hover {
+  background-position: left bottom;
 }
 .section .slider__navigator_arrowRight {
   right: 0;
-  -ms-transform: rotate(180deg);
-  /* IE 9 */
-  -webkit-transform: rotate(180deg);
-  /* Safari */
-  transform: rotate(180deg);
+  background-position: right top;
+}
+.section .slider__navigator_arrowRight:hover {
+  background-position: right bottom;
 }
 .section .slider__navigatorWrapper {
   position: relative;

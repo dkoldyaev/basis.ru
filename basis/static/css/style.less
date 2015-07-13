@@ -498,17 +498,25 @@ body {
         position: relative;
         top: 0;
         bottom: 0;
-        width: 47px;
-        background: url("../img/slider_navigator_arrow.png") center center no-repeat;
+        width: 57px;
+        background-image: url("../img/slider_navigator_arrow.png");
+        background-repeat: no-repeat;
         text-indent: -9000px;
-        min-height: @NAVIGATOR_HEIGHT;
+        min-height: 114px;
         float: right;
         &Left {
           left: 0;
+          background-position: left top;
+          &:hover {
+            background-position: left bottom;
+          }
         }
         &Right {
           right: 0;
-          .cssRotate(180deg);
+          background-position: right top;
+          &:hover {
+            background-position: right bottom;
+          }
         }
       }
       &Wrapper {
