@@ -30,6 +30,7 @@
                             $('.footer__phone_formContainer').toggle();})
                         .on('click', '.footer__feedback_link', function(event){
                             event.preventDefault();
+                            $('.footer__phone_formContainer').hide();
                             $('.popUpShadow').show();
                             $('.footer__feedback_formContainer').show()})
                         .on('submit', '.footer__feedback_formContainer form', function(event){
