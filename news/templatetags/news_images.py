@@ -23,7 +23,7 @@ def news_image_fit(image_path):
         save_path, image_is_exsist = ImageHelper.try_exsist_or_create_dir(
             image_path_without_media,
             'news_image_fit',
-            format='JPEG')
+            format='PNG')
 
         if not image_is_exsist or settings.DEBUG:
 
@@ -37,17 +37,16 @@ def news_image_fit(image_path):
 
             image =     ImageHelper.open(image_path_without_media)
             mask =      ImageHelper.open(random.choice(masks))
-            background= Image.new('RGB', mask.size, '#ffffff')
+            background= Image.new('RGBA', mask.size, (255,255,255,0))
 
             result =    ImageHelper.fit(
                 image,
                 mask.size
             )
 
-            result =    ImageHelper.mask(result, mask)
-            result =    ImageHelper.put(result, background)
+            background.paste(result, (0,0), mask)
 
-            result.save(save_path, 'JPEG', quality = 85, optimize=True, progressive=True)
+            background.save(save_path, 'PNG', quality = 85, optimize=True, progressive=True)
 
         return save_path.replace(settings.MEDIA_ROOT, settings.MEDIA_URL)
 
