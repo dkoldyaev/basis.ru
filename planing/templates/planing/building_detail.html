@@ -55,10 +55,10 @@
                         {{ apartament.description }}
                     {% endautoescape %}
 
-                    <a href="{% url 'apartment_detail' building_id=building.id apartment_id=apartament.id %}"
-                       class="building__apartment_link apartment_{{ apartament.id }}">
-                        посмотреть планировку
-                    </a>
+{#                    <a href="{% url 'apartment_detail' building_id=building.id apartment_id=apartament.id %}"#}
+{#                       class="building__apartment_link apartment_{{ apartament.id }}">#}
+{#                        посмотреть планировку#}
+{#                    </a>#}
 
                 </div>
             {% endfor %}
