@@ -144,26 +144,16 @@
             if (new_slide_num > cur_slide_num) {
                 new_slide_description
                         .css({position:'absolute'})
-                        .fadeIn((function(navigator, new_slide_description){return function(){
-                            navigator.animate({width:new_slide_description.outerWidth()+'px'});
-                        };})(navigator, new_slide_description));
-                old_slide_description.fadeOut();
-                new_slide.animate(
-                        {opacity: 1},
-                        (function(new_slide_num, navigator){
-                            navigator.attr('data-current-slide', new_slide_num);
-                        })(new_slide_num, navigator));
-
+                        .show();
+                        navigator.animate({width:new_slide_description.outerWidth()+'px'});
+                old_slide_description.hide();
+                new_slide.show();
+                navigator.attr('data-current-slide', new_slide_num);
             } else {
-                old_slide_description
-                        .fadeOut((function(navigator, new_slide_description){return function(){
-                            navigator.animate({width:new_slide_description.outerWidth()+'px'});
-                            };})(navigator, new_slide_description));
-                    old_slide.animate(
-                            {opacity: 0},
-                            (function(new_slide_num, navigator){
-                                navigator.attr('data-current-slide', new_slide_num);
-                            })(new_slide_num, navigator));
+                old_slide_description.hide();
+                navigator.animate({width:new_slide_description.outerWidth()+'px'});
+                old_slide.hide();
+                navigator.attr('data-current-slide', new_slide_num);
             }
 
             piemenu.navigateWheel(new_slide_num);
