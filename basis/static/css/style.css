@@ -1934,9 +1934,11 @@ i .section .slider__navigator__itemDescriptionLine2 {
   -o-background-size: 100%, 100%;
   background-size: 100%, 100%;
   display: none;
-  right: 10px;
+  top: -35px;
+  right: -80px;
   margin-top: 25px;
   min-width: 66px;
+  position: relative;
 }
 .section .slider__navigator_arrow {
   display: block;
