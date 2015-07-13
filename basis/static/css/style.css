@@ -1535,6 +1535,16 @@ i .section .building__otherBuildings__building_title h2 {
   max-width: 640px;
   padding-left: 15px;
 }
+.section .building__otherBuildings__building_preview a {
+  color: #bdcb21;
+  text-decoration: none;
+  border: none;
+}
+.section .building__otherBuildings__building_preview a:active,
+.section .building__otherBuildings__building_preview a:hover,
+.section .building__otherBuildings__building_preview a:visited {
+  color: #bdcb21;
+}
 .section .building__otherBuildings__building_preview_image {
   display: block;
   overflow: hidden;
