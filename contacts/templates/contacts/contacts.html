@@ -7,8 +7,7 @@
     {{ block.super }}
     <style rel="stylesheet">
         .section {
-            background: url("{{ contact.image.url }}") 10% 50% no-repeat;
-            background-size: 70%;
+            background: url("{% static 'img/contacts.png' %}") 0 80% no-repeat;
         }
     </style>
 {% endblock %}
