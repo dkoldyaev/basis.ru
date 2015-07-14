@@ -2585,5 +2585,5 @@ i [class|=wheelnav-piemenu-title] > tspan {
 }
 #piemenu text,
 #piemenu tspan {
-  cursor: default;
+  cursor: pointer;
 }
