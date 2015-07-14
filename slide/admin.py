@@ -6,6 +6,7 @@ from django.db import models
 from suit.admin import SortableTabularInline
 
 from slide.models import SlidePage, Slide
+from slide.forms import SlideForm
 from basis.widgets import ImageWidget
 
 class SlideAdminInline(SortableTabularInline):
@@ -21,10 +22,10 @@ class SlideAdminInline(SortableTabularInline):
     ]
     ordering = ['order']
     extra = 0
-
     formfield_overrides = {
         models.ImageField:  {'widget':  ImageWidget()}
     }
+    form = SlideForm
 
 class SlidePageAdmin(admin.ModelAdmin):
 

@@ -12,7 +12,7 @@ from basis.widgets import SVGImageWidget
 class ApartmentInlineAdmin(SortableTabularInline):
 
     model = Apartment
-    fields = ['plan_fill', 'plan', 'price', 'description', 'plan_fill_area']
+    fields = ['plan_fill', 'plan', 'price', 'description',]
     extra = 0
 
     formfield_overrides = {

@@ -33,7 +33,7 @@ class MenuItemAdmin(SortableModelAdmin):
     readonly_fields = ['_created', '_updated', 'path', 'planing_no_settings', 'news_list_no_settings', 'contacts_no_settings']
     ordering = ['order']
 
-    change_form_template = 'menu/admin/menu_change_form.html'
+    change_form_template = 'admin/menu_change_form.html'
 
     def planing_no_settings(self, obj):
         return mark_safe(u'Нечего настраивать')

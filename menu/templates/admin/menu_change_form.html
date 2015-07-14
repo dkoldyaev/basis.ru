@@ -1,0 +1,26 @@
+
+{% extends "admin/change_form.html" %}
+
+{% block extrajs %}
+
+    {{ block.super }}
+
+    <script>
+        (function ($) {
+            $(function () {
+
+                $('#suit_form_tabs a[href=#'+ $('#id_type').val() +']').click();
+                $('#suit_form_tabs a').click(function(event){
+                    event.preventDefault();
+                    console.log($(this).attr('href'));
+                    $('#id_type').val($(this).attr('href').replace('#', ''));
+                });
+                $('#id_type').change(function(event){
+                    $('#suit_form_tabs a[href=#'+ $('#id_type').val() +']').click();
+                })
+
+            });
+        }(Suit.$))
+    </script>
+
+{% endblock %}

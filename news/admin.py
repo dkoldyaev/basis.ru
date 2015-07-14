@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 __author__ = 'dkoldyaev'
 
 from django.db import models
@@ -9,6 +10,15 @@ from news.models import News
 
 class NewsAdmin(admin.ModelAdmin):
 
+    fieldsets = (
+        (None,      {'fields':  ['date', 'title']}),
+        (u'Анонс',  {'fields':  ['announce']}),
+        (u'Текст',  {'fields':  ['image', 'text']}),
+        ('Admin',   {'fields':  ['_created', '_updated', '_active', '_comment'],
+                     'classes': ['collapse']}),
+    )
+
+    readonly_fields = ['_created', '_updated', ]
     list_display = ['date', 'title', 'get_image']
     list_display_links = ['title', 'get_image']
 

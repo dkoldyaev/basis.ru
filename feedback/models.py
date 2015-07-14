@@ -20,8 +20,14 @@ class Feedback(BaseModel):
 
     objects =   FeedbackQuerySet
 
+    def __unicode__(self):
+        return u'Обратная связь: %s, %s (%s)' % (self.name, self.message[:30], self._created.strftime('%d.%m.%Y %H:%M'))
+
 class OrderCall(BaseModel):
 
     phone =     models.CharField(blank=False, null=False, max_length=255, verbose_name=u'Телефон')
 
     page =      models.CharField(blank=True, null=True, max_length=255, verbose_name=u'Страница сайта')
+
+    def __unicode__(self):
+        return u'Обратная связь: %s (%s)' % (self.phone, self._created.strftime('%d.%m.%Y %H:%M'))
