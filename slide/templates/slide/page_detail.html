@@ -163,12 +163,12 @@
                         .show();
                         navigator.animate({width:new_slide_description.outerWidth()+'px'});
                 old_slide_description.hide();
-                new_slide.show();
+                new_slide.animate({opacity:1});
                 navigator.attr('data-current-slide', new_slide_num);
             } else {
                 old_slide_description.hide();
                 navigator.animate({width:new_slide_description.outerWidth()+'px'});
-                old_slide.hide();
+                old_slide.animate({opacity:0});
                 navigator.attr('data-current-slide', new_slide_num);
             }
 
