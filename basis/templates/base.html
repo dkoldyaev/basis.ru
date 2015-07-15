@@ -91,6 +91,7 @@
     {% block header %}
         <header class="header">
             <a href="{% url 'slide_page' slide_page_slug='' %}" class="header__logo">
+                <img src="{% static 'img/logo_none.svg' %}" />
                 {% siteblock 'logo_text' %}
             </a>
             <ul class="header__menu_list">

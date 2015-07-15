@@ -34,17 +34,26 @@ body {
   top: 0;
   height: 120px;
   z-index: 2;
+  overflow: visible;
 
   &__logo {
     .displayBlock(visible);
     float: left;
-    width: 70px;
+    width: 100px;
     height: auto;
     padding-top: 75px;
     text-align: left;
-    background: url("../img/header_logo.png") left top no-repeat;
+    background: url("../img/logo_none.svg") left top no-repeat;
     font-size: @FONT_SIZE_SMALL;
     .systemLink(@COLOR_GRAY);
+    text-indent: -9000px;
+    position: absolute;
+    top: 15px;
+    left: 35px;
+    > img {
+      width: 100%;
+      height: auto;
+    }
   }
 
 

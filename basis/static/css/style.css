@@ -1248,25 +1248,34 @@ i body {
   top: 0;
   height: 120px;
   z-index: 2;
+  overflow: visible;
 }
 .header__logo {
   display: block;
   overflow: visible;
   float: left;
-  width: 70px;
+  width: 100px;
   height: auto;
   padding-top: 75px;
   text-align: left;
-  background: url("../img/header_logo.png") left top no-repeat;
+  background: url("../img/logo_none.svg") left top no-repeat;
   font-size: 12px;
   color: #656565;
   text-decoration: none;
   border: none;
+  text-indent: -9000px;
+  position: absolute;
+  top: 15px;
+  left: 35px;
 }
 .header__logo:active,
 .header__logo:hover,
 .header__logo:visited {
   color: #656565;
+}
+.header__logo > img {
+  width: 100%;
+  height: auto;
 }
 .header__menu_list {
   display: block;
