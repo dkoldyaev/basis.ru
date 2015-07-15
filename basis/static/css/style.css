@@ -1222,6 +1222,8 @@ body {
   overflow-y: auto;
   font-family: pf_beausans_prothin;
   color: #000000;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 body i,
 ibody,
