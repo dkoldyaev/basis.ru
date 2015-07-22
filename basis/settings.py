@@ -81,6 +81,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
+                'basis.context_processors.debug',
                 'menu.context_processors.menu_items',
                 'feedback.context_processors.order_call_form',
                 'feedback.context_processors.feedback_form'
