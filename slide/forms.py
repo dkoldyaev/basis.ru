@@ -3,14 +3,14 @@ __author__ = u'Кольдяев Дмитрий'
 
 from django import forms
 from django.contrib import admin
-from suit.widgets import NumberInput, EnclosedInput
+from suit.widgets import NumberInput
 
 class SlideForm(forms.ModelForm):
 
     class Meta:
         widgets = {
-            'title_width':      EnclosedInput(append='px', attrs={'class': 'input-mini'}),
-            'title_digit':      EnclosedInput(attrs={'class': 'input-mini'}),
+            'title_width':      NumberInput(append='px', attrs={'class': 'input-mini'}),
+            'title_digit':      NumberInput(attrs={'class': 'input-mini'}),
 
             'title_line1_deg':  NumberInput(attrs={'class': 'input-mini'}),
             'title_line1_top':  NumberInput(attrs={'class': 'input-mini'}),
