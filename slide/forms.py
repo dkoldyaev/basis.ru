@@ -9,7 +9,7 @@ class SlideForm(forms.ModelForm):
 
     class Meta:
         widgets = {
-            'title_width':      EnclosedInput(append='px', attrs={'class': 'input-mini'}),
+            'title_width':      EnclosedInput(attrs={'class': 'input-mini'}),
             'title_digit':      EnclosedInput(attrs={'class': 'input-mini'}),
 
             'title_line1_deg':  EnclosedInput(attrs={'class': 'input-mini'}),
