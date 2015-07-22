@@ -4,6 +4,10 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    {% if DEBUG %}
+        <meta name="robots" content="all"/>
+        <meta name="robots" content="noindex, follow"/>
+    {% endif %}
     <title></title>
     {% block style %}
         <link href="{% static 'css/style.css' %}" rel="stylesheet" media="all">
