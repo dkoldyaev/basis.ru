@@ -18,7 +18,7 @@ class BaseFeedbackForm(forms.ModelForm):
             raise ObjectDoesNotExist(u'Сохраните форму до отправки email\'а')
 
         submit_from =   settings.EMAIL_SEND_FROM
-        submit_to =     ['admin@basis.ru', 'dkoldyaev@gmail.com']
+        submit_to =     settings.EMAIL_SEND_TO
 
         data = {'instance': self.instance}
 
